@@ -100,7 +100,7 @@ function HeroSection() {
           >
             Collab-X is a full-stack web application inspired by Google Docs, designed to enable real-time collaborative document editing with seamless multi-user support. Users can create, edit, and collaborate on documents in a shared workspace with live updates and rich text formatting.
 
-It's built with modern web technologies to ensure high performance, scalability, and a polished user experience.
+It&apos;s built with modern web technologies to ensure high performance, scalability, and a polished user experience.
           </motion.p>
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -402,7 +402,7 @@ function KeyFeatures() {
               Key Features
             </h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-              Standout capabilities that define the project$apos;s excellence.
+              Standout capabilities that define the project&apos;s excellence.
             </p>
           </motion.div>
           <motion.div

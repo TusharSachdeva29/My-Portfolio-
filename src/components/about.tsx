@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Github, Instagram, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";

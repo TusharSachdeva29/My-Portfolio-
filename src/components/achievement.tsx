@@ -10,7 +10,6 @@ import {
   Code,
   BookOpen,
   Trophy,
-  Star,
   Zap,
   ArrowRight,
   Medal,
@@ -31,7 +30,7 @@ interface Achievement {
   title: string;
   description: string;
   description_long: string;
-  highlight: string;
+  highlight?: string;
   icon: React.ReactNode;
   importance: "high" | "medium" | "low";
   link: string;
