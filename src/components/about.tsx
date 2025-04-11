@@ -39,18 +39,18 @@ export default function About() {
 
     // 🔹 DevOps & Cloud
     "Docker",
-    "Kubernetes",
-    "Nginx",
-    "Load Balancing",
-    "Reverse Proxy",
+    // "Kubernetes",
+    // "Nginx",
+    // "Load Balancing",
+    // "Reverse Proxy",
     "GCP",
     "AWS (S3, EC2, Lambda)",
 
     // 🔹 System Programming & Performance
     "Linux",
-    "Shell Scripting",
+    // "Shell Scripting",
     // "Multithreading",
-    "Socket Programming",
+    // "Socket Programming",
 
     // 🔹 Grpahics Programming
     // "OpenGL",
@@ -181,9 +181,9 @@ export default function About() {
               </p>
               <p>
                 On the frontend, I specialize in React, Next.js, Tailwind CSS,
-                and Framer Motion, ensuring seamless user experiences. I also
+                {/* and Framer Motion, ensuring seamless user experiences. I also
                 work with DevOps tools like Docker, Kubernetes, Nginx, and CI/CD
-                pipelines to enhance scalability and deployment.
+                pipelines to enhance scalability and deployment. */}
               </p>
               <p>
                 I am always eager to learn and take on new challenges. With a
