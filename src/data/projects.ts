@@ -147,6 +147,7 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/Code-X",
+    liveDemo: "https://drive.google.com/file/d/1gZSHdLYahxIj5aiVlP_lRTlljK6RzXO7/view",
   },
   {
     slug: "collab-x",
@@ -312,6 +313,7 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/Udaan_AI",
+    liveDemo: "https://www.youtube.com/watch?v=Wvbfp_NW3Bc",
   },
   {
     slug: "marg",
@@ -405,6 +407,7 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/Marg-Gps",
+    liveDemo: "https://www.youtube.com/watch?v=Dya2MEnw0RQ",
   },
   {
     slug: "fire-tv",
@@ -470,6 +473,7 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/HackonAmazon",
+    liveDemo: "https://www.youtube.com/watch?v=5vkd3C3EMcg",
   },
   {
     slug: "hotel-search",
@@ -1020,7 +1024,7 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/LegalEase-AI",
-    liveDemo: "https://leg-al-ease-ai.vercel.app/",
+    liveDemo: "https://www.youtube.com/watch?v=t88iDX4M7sQ",
   },
 
   // ─── Low Level Development ────────────────────────────────────
