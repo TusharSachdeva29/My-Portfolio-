@@ -229,33 +229,16 @@ export default function About() {
             </motion.div>
           </div>
 
-          <div className="w-full lg:w-2/5 mt-8 lg:mt-0 flex flex-col gap-10">
-            {/* Profile Image */}
-            <motion.div
+          <div className="w-full lg:w-2/5 mt-8 lg:mt-0">
+            <motion.h2
+              ref={skillsHeaderRef}
+              className="text-2xl sm:text-3xl font-semibold mb-4"
               initial="hidden"
               animate={skillsHeaderInView ? "visible" : "hidden"}
               variants={fadeIn}
-              className="flex justify-center lg:justify-start"
             >
-              <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-neutral-100 dark:border-neutral-800 shadow-2xl group">
-                <img
-                  src="/my-pic.jpg"
-                  alt="Tushar Sachdeva"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-            </motion.div>
-
-            <div>
-              <motion.h2
-                ref={skillsHeaderRef}
-                className="text-2xl sm:text-3xl font-semibold mb-4"
-                initial="hidden"
-                animate={skillsHeaderInView ? "visible" : "hidden"}
-                variants={fadeIn}
-              >
-                Skills
-              </motion.h2>
+              Skills
+            </motion.h2>
 
             <motion.div
               ref={skillsRef}
@@ -274,7 +257,6 @@ export default function About() {
                 </motion.div>
               ))}
             </motion.div>
-            </div>
           </div>
         </div>
       </div>
