@@ -48,26 +48,6 @@ export default function PositionsOfResponsibility() {
         ],
       },
       {
-        id: 1,
-        title: "Execomm at IEEE society",
-        organization: "Web development & Event Management",
-        period: "2025 - present",
-        icon: <Users className="h-6 w-6" />,
-        color: "bg-purple-500",
-        skills: [
-          "Web Development",
-          "Event Management",
-          "Team Coordination",
-          // "Sponsorship",
-        ],
-        responsibilities: [
-          "Developed and maintained websites and digital platforms for IEEE events",
-          "Coordinated and managed end-to-end execution of technical and cultural events",
-          "Collaborated with team members to ensure smooth communication and task distribution",
-          "Contributed to strategic planning and logistics for society-led initiatives and outreach",
-        ],
-      },
-      {
         id: 2,
         title: "Member at Algorithmic Society of NSUT(ASN)",
         organization:

@@ -72,7 +72,7 @@ export default function BasicInfo() {
             className="text-neutral-800 dark:text-neutral-200 ml-2 text-sm md:text-lg lg:text-3xl z-[999]"
             variants={fadeInUp}
           >
-            Sophomore at Netaji Subhash University of Technology.
+          Pre final year student at Netaji Subhash University of Technology.
           </motion.p>
 
           <motion.p
@@ -80,11 +80,10 @@ export default function BasicInfo() {
             className="ml-2 mt-4 text-xs lg:text-lg md:text-sm z-[999]"
             variants={fadeInUp}
           >
-            Over the past two years at NSUT, I&apos;ve excelled in{" "}
-            <Bold>full-stack development</Bold>
-            with Next.js, <Bold>low-level programming</Bold> with C++ servers
-            and OpenGL, <Bold>competitive coding</Bold>, {" "}
-            <Bold>maching learning and deep learning</Bold>, showcasing expertise through projects
+            Over the past years at NSUT, I&apos;ve excelled in{" "}
+            <Bold>full-stack development</Bold>, <Bold>low-level programming</Bold> with C++ servers
+      , <Bold>competitive coding</Bold>, {" "}
+            <Bold>maching learning and deep learning</Bold>, <Bold>Distributed systems</Bold> showcasing expertise through projects
             and a strong coding profile.
           </motion.p>
 

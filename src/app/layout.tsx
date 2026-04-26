@@ -33,9 +33,9 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <div className="w-full bg-yellow-400 text-black text-center py-4 px-2 text-xl sm:text-2xl font-black uppercase tracking-wider shadow-lg border-b-4 border-yellow-600">
+          {/* <div className="w-full bg-yellow-400 text-black text-center py-4 px-2 text-xl sm:text-2xl font-black uppercase tracking-wider shadow-lg border-b-4 border-yellow-600">
             ⚠️ Warning: This portfolio has been under construction for 2 years… expected completion before my B.Tech degree expires. ,,
-          </div>
+          </div> */}
           {children}
         </body>
       </html>

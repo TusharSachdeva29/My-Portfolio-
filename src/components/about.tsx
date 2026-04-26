@@ -39,18 +39,16 @@ export default function About() {
 
     // 🔹 DevOps & Cloud
     "Docker",
-    // "Kubernetes",
-    // "Nginx",
-    // "Load Balancing",
-    // "Reverse Proxy",
+    "Kubernetes",
+    "Ngine",
+    "Load Balancing",
+    "Reverse Proxy",
     "GCP",
     "AWS (S3, EC2, Lambda)",
-
+    "Azure",
     // 🔹 System Programming & Performance
     "Linux",
-    // "Shell Scripting",
-    // "Multithreading",
-    // "Socket Programming",
+    "Multithreading",
 
     // 🔹 Grpahics Programming
     // "OpenGL",
@@ -168,10 +166,10 @@ export default function About() {
                 system programming, and cloud infrastructure.
               </p>
               <p>
-                I am currently learning Operating Systems, Object-Oriented
-                Programming, Computer Networks, and System Design. I work with
-                C++, TypeScript, Node.js, PostgreSQL, and Docker, continuously
-                refining my skills through hands-on projects.
+                I have a solid understanding of Operating Systems, Object-Oriented Programming,
+                Computer Networks, and System Design. I work with C++, TypeScript, Node.js,
+                PostgreSQL, and Docker, and I am continuously refining my skills through
+                hands-on projects.
               </p>
               <p>
                 I actively participate in competitive programming on CodeChef
@@ -181,9 +179,9 @@ export default function About() {
               </p>
               <p>
                 On the frontend, I specialize in React, Next.js, Tailwind CSS,
-                {/* and Framer Motion, ensuring seamless user experiences. I also
+                and Framer Motion, ensuring seamless user experiences. I also
                 work with DevOps tools like Docker, Kubernetes, Nginx, and CI/CD
-                pipelines to enhance scalability and deployment. */}
+                pipelines to enhance scalability and deployment.
               </p>
               <p>
                 I am always eager to learn and take on new challenges. With a

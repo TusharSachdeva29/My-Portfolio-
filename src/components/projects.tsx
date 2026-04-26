@@ -1,73 +1,59 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState, useRef } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Calendar } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import {
+  projects,
+  CATEGORIES,
+  type Category,
+  type ProjectData,
+} from "@/data/projects";
 
-export interface ProjectProps {
-  id: string;
-  name: string;
-  description: string;
-  photo: string;
-  url: string;
-  tags?: string[];
-  date?: string;
-  featured?: boolean;
-}
+const ALL_FILTER = "All" as const;
+type FilterOption = typeof ALL_FILTER | Category;
+const FILTER_OPTIONS: FilterOption[] = [ALL_FILTER, ...CATEGORIES];
+
+/* ── Animation variants ─────────────────────────────────────── */
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+  },
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 80, damping: 16 },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.92,
+    y: 20,
+    transition: { duration: 0.25, ease: "easeIn" },
+  },
+};
 
 export default function Projects() {
-  const list: ProjectProps[] = [
-    {
-      id: "1",
-      name: "Pravah-X",
-      description:
-        "Pravah-X is a coding platform designed specifically for supercharge your competitive programming experience. It offers a personaized experience that helps you practice smarter, stay consistent, and grow with a like minded community.",
-      photo: "/comx/6.png",
-      url: "https://github.com/TusharSachdeva29/Pravah-X",
-      tags: ["Next.js", "Node.js", "Postgres", "Docker", "Redis"],
-      date: "",
-      featured: false,
-    },
-    {
-      id: "2",
-      name: "Collab-X",
-      description:
-        "Collab-X is a real-time collaborative document editing platform designed to streamline teamwork and enhance productivity",
-      photo: "/comx/6.png",
-      url: "https://github.com/TusharSachdeva29/Collab-X",
-      tags: ["Next.js", "Node.js", "Convex", "Liveblocks", "Tiptap"],
-      date: "",
-      featured: false,
-    },
-    {
-      id: "3",
-      name: "BlogSpace",
-      description:
-        "Blog-Space is a blogging platform that enables users to create, edit, and share blog posts. It offers an interactive interface for writing and publishing content, allowing users to format their posts with ease.",
-      photo: "/comx/6.png",
-      url: "https://github.com/TusharSachdeva29/blog-space",
-      tags: ["React", "Node.js", "MongoDB", "Editor.js"],
-      date: "",
-      featured: false,
-    },
-    {
-      id: "4",
-      name: "Gym-DB",
-      description:
-        "Gym Management System designed to handle various gym-related tasks efficiently. It provides a user-friendly interface for managing gym members, trainers, attendance, locker assignments, and gym classes.",
-      photo: "/comx/6.png",
-      url: "https://github.com/TusharSachdeva29/GYM_DB",
-      tags: ["React", "Node.js", "My-SQL"],
-      date: "",
-      featured: false,
-    },
-  ];
+  const [activeFilter, setActiveFilter] = useState<FilterOption>(ALL_FILTER);
+  const titleRef = useRef(null);
+  const filterRef = useRef(null);
+  const titleInView = useInView(titleRef, { once: true, amount: 0.5 });
+  const filterInView = useInView(filterRef, { once: true, amount: 0.5 });
+
+  const filteredProjects =
+    activeFilter === ALL_FILTER
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
 
   return (
     <div
@@ -75,11 +61,13 @@ export default function Projects() {
       id="Projects"
     >
       <div className="max-w-7xl mx-auto">
+        {/* ── Section Title ──────────────────────────────────── */}
         <motion.div
-          className="flex flex-row-reverse"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          ref={titleRef}
+          className="flex flex-row-reverse mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#565bac]">
             .
@@ -89,155 +77,200 @@ export default function Projects() {
           </h1>
         </motion.div>
 
-        <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-muted-foreground text-base md:text-lg mb-8 max-w-2xl"
         >
-          Full Stack
-        </motion.h1>
-        <div className="flex">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {list.map((item, index) => {
-              return (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.1 * index,
-                    ease: "easeOut",
-                  }}
+          A curated selection of projects spanning full-stack applications,
+          AI/ML research, and low-level systems engineering.
+        </motion.p>
+
+        {/* ── Category Filter Bar ────────────────────────────── */}
+        <motion.div
+          ref={filterRef}
+          className="mb-10 flex flex-wrap gap-2 sm:gap-2.5"
+          initial={{ opacity: 0, y: 15 }}
+          animate={filterInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+        >
+          {FILTER_OPTIONS.map((filter) => {
+            const isActive = activeFilter === filter;
+            const count =
+              filter === ALL_FILTER
+                ? projects.length
+                : projects.filter((p) => p.category === filter).length;
+            return (
+              <motion.button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className={cn(
+                  "relative px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 cursor-pointer flex items-center gap-2",
+                  isActive
+                    ? "bg-[#565bac] text-white border-[#565bac] shadow-lg shadow-[#565bac]/20"
+                    : "bg-transparent border-border text-muted-foreground hover:border-[#565bac]/40 hover:text-foreground hover:bg-secondary/50"
+                )}
+              >
+                {filter}
+                <span
+                  className={cn(
+                    "text-[10px] font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5 transition-colors",
+                    isActive
+                      ? "bg-white/20 text-white"
+                      : "bg-secondary text-muted-foreground"
+                  )}
                 >
-                  <ProjectCard project={item} />
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+                  {count}
+                </span>
+              </motion.button>
+            );
+          })}
+        </motion.div>
+
+        {/* ── Project Cards Grid ─────────────────────────────── */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div key={project.slug} variants={cardReveal}>
+                <ProjectCard project={project} index={index} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {filteredProjects.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center justify-center py-20 gap-3"
+          >
+            <Sparkles className="h-10 w-10 text-muted-foreground/40" />
+            <p className="text-muted-foreground text-lg">
+              No projects in this category yet.
+            </p>
+          </motion.div>
+        )}
       </div>
     </div>
   );
 }
 
-export function ProjectCard({ project }: { project: ProjectProps }) {
-  const [isHovering, setIsHovering] = useState(false);
-
+/* ── Project Card ────────────────────────────────────────────── */
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: ProjectData;
+  index: number;
+}) {
   return (
-    <motion.div
-      className={cn(
-        "group relative flex flex-col overflow-hidden rounded-lg border bg-background transition-all duration-300 hover:shadow-lg",
-        "dark:bg-neutral-950 dark:border-neutral-800 w-full",
-        project.featured &&
-          "ring-2 ring-primary ring-offset-2 dark:ring-offset-neutral-950"
-      )}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-      whileHover={{
-        y: -5,
-        transition: { duration: 0.2 },
-      }}
-    >
-      <div className="relative overflow-hidden">
-        <Image
-          src={project.photo || "/placeholder.svg"}
-          width={576}
-          height={324}
-          alt={`Screenshot of ${project.name}`}
-          className={cn(
-            "object-cover transition-transform duration-300",
-            isHovering && "scale-105"
-          )}
-        />
-        {project.featured && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Badge className="absolute left-3 top-3 bg-primary text-primary-foreground">
-              Featured
-            </Badge>
-          </motion.div>
+    <Link href={`/projects/${project.slug}`} className="block h-full">
+      <motion.div
+        className={cn(
+          "group relative flex flex-col h-full overflow-hidden rounded-2xl border bg-background transition-all duration-500",
+          "dark:bg-neutral-950/80 dark:border-neutral-800/80",
+          "hover:shadow-2xl hover:shadow-[#565bac]/8 hover:border-[#565bac]/40",
+          "backdrop-blur-sm"
         )}
-      </div>
-
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-2">
-          <motion.h3
-            className="text-xl font-semibold tracking-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            {project.name}
-          </motion.h3>
-          {project.date && (
-            <motion.div
-              className="flex items-center text-xs text-muted-foreground"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-            >
-              <Calendar className="mr-1 h-3 w-3" />
-              {project.date}
-            </motion.div>
-          )}
+        whileHover={{
+          y: -8,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+      >
+        {/* ── Gradient top bar with animated width ── */}
+        <div className="relative h-1 w-full overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#565bac] via-[#7c5cbf] to-[#a78bfa] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+          <motion.div
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#565bac] to-[#a78bfa]"
+            initial={{ width: "0%" }}
+            whileHover={{ width: "100%" }}
+            transition={{ duration: 0.6 }}
+          />
         </div>
 
-        {project.tags && project.tags.length > 0 && (
-          <motion.div
-            className="mt-2 flex flex-wrap gap-1"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-          >
-            {project.tags.map((tag, index) => (
-              <motion.div
-                key={tag}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 * index + 0.2 }}
+        {/* ── Hover glow effect ── */}
+        <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#565bac]/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#7c5cbf]/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative flex flex-1 flex-col p-5 sm:p-6">
+          {/* ── Header row: index + category ── */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-[11px] font-mono text-muted-foreground/60 tracking-wider">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <Badge
+              variant="secondary"
+              className="text-[10px] uppercase tracking-widest font-semibold px-2.5 py-0.5"
+            >
+              {project.category}
+            </Badge>
+          </div>
+
+          {/* ── Project Name ── */}
+          <h3 className="text-lg sm:text-xl font-bold tracking-tight mb-2 group-hover:text-[#565bac] transition-colors duration-300">
+            {project.name}
+            {/* Animated underline */}
+            <span className="block h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#565bac] to-[#a78bfa] transition-all duration-500 mt-1 rounded-full" />
+          </h3>
+
+          {/* ── Description ── */}
+          <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3 flex-1">
+            {project.about}
+          </p>
+
+          {/* ── Tech stack pills ── */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {project.techStack.slice(0, 4).map((tech) => (
+              <span
+                key={tech}
+                className={cn(
+                  "px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all duration-300",
+                  "bg-secondary/80 text-secondary-foreground",
+                  "group-hover:bg-[#565bac]/10 group-hover:text-foreground"
+                )}
               >
-                <Badge variant="secondary" className="text-xs">
-                  {tag}
-                </Badge>
-              </motion.div>
+                {tech}
+              </span>
             ))}
-          </motion.div>
-        )}
+            {project.techStack.length > 4 && (
+              <span className="px-2.5 py-1 rounded-lg bg-secondary/60 text-muted-foreground text-[11px] font-medium">
+                +{project.techStack.length - 4} more
+              </span>
+            )}
+          </div>
 
-        <motion.p
-          className="mt-3 flex-1 text-sm text-muted-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
-          {project.description}
-        </motion.p>
+          {/* ── View Project link ── */}
+          <div className="flex items-center justify-between pt-4 border-t border-border/60">
+            <span className="text-sm font-medium text-[#565bac] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
+              View Project
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
 
-        <motion.div
-          className="mt-4"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.4 }}
-        >
-          <Button asChild className="w-full group/button" variant="outline">
-            <Link href={project.url}>
-              Read More
-              <motion.span
-                whileHover={{ x: 2, y: -2 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ArrowUpRight className="ml-2 h-4 w-4" />
-              </motion.span>
-            </Link>
-          </Button>
-        </motion.div>
-      </div>
-    </motion.div>
+            {/* Live badge indicator */}
+            {project.liveDemo && (
+              <span className="flex items-center gap-1.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                Live
+              </span>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
