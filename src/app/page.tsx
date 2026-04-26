@@ -5,6 +5,7 @@ import Achievement from "@/components/achievement";
 import BasicInfo from "@/components/basic-info";
 import CodingProfile from "@/components/coding-profile";
 import Education from "@/components/education";
+import Experience from "@/components/experience";
 import POR from "@/components/position-of-responsibility";
 import Projects from "@/components/projects";
 import HoverLines from "@/components/ui/hover-line";
@@ -13,6 +14,7 @@ import ThemeButton from "@/components/ui/theme-changer";
 
 const headings = [
   "About",
+  "Experience",
   "Projects",
   "Coding Profiles",
   "Education",
@@ -29,6 +31,8 @@ export default function Home() {
         <BasicInfo />
         <Separator className="w-[calc(100%-26rem)] my-16" />
         <About />
+        <Separator className="w-[calc(100%-26rem)] my-16" />
+        <Experience />
         <Separator className="w-[calc(100%-26rem)] my-16" />
         <Projects />
         <Separator className="w-[calc(100%-26rem)] my-16" />
