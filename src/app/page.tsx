@@ -12,6 +12,8 @@ import HoverLines from "@/components/ui/hover-line";
 import { Separator } from "@/components/ui/separator";
 import ThemeButton from "@/components/ui/theme-changer";
 
+import Contact from "@/components/contact";
+
 const headings = [
   "About",
   "Experience",
@@ -20,6 +22,7 @@ const headings = [
   "Education",
   "Achivements",
   "Positions Of Responsibility",
+  "Contact",
 ];
 
 export default function Home() {
@@ -38,11 +41,13 @@ export default function Home() {
         <Separator className="w-[calc(100%-26rem)] my-16" />
         <CodingProfile />
         <Separator className="w-[calc(100%-26rem)] my-16" />
-        <Education />
-        <Separator className="w-[calc(100%-26rem)] my-16" />
         <Achievement />
         <Separator className="w-[calc(100%-26rem)] my-16" />
+        <Education />
+        <Separator className="w-[calc(100%-26rem)] my-16" />
         <POR />
+        <Separator className="w-[calc(100%-26rem)] my-16" />
+        <Contact />
       </div>
     </>
   );
