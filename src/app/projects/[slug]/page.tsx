@@ -42,10 +42,7 @@ const itemVariants = {
   },
 };
 
-const fadeUp = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
-};
+
 
 /* ── Section Heading helper ──────────────────────────────────── */
 function SectionHeading({
@@ -275,7 +272,7 @@ export default function ProjectDetailPage() {
             variants={containerVariants}
             className="flex flex-wrap gap-2.5 md:gap-3"
           >
-            {project.techStack.map((tech, i) => (
+            {project.techStack.map((tech) => (
               <motion.div
                 key={tech}
                 variants={itemVariants}
@@ -309,7 +306,7 @@ export default function ProjectDetailPage() {
             variants={containerVariants}
             className="grid gap-4 sm:grid-cols-2"
           >
-            {project.features.map((feature, i) => (
+            {project.features.map((feature) => (
               <motion.div
                 key={feature.title}
                 variants={itemVariants}
@@ -408,7 +405,7 @@ export default function ProjectDetailPage() {
           <SectionHeading icon={Lightbulb} title="Future Improvements" />
 
           <motion.div variants={containerVariants} className="space-y-3">
-            {project.futureImprovements.map((item, i) => (
+            {project.futureImprovements.map((item) => (
               <motion.div
                 key={item.title}
                 variants={itemVariants}

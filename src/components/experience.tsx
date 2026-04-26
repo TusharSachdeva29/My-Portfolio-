@@ -141,8 +141,8 @@ export default function Experience() {
           <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#565bac]/40 via-border to-transparent hidden sm:block" />
 
           <div className="space-y-8 sm:space-y-10">
-            {experiences.map((exp, index) => (
-              <ExperienceCard key={exp.company} experience={exp} index={index} />
+            {experiences.map((exp) => (
+              <ExperienceCard key={exp.company} experience={exp} />
             ))}
           </div>
         </motion.div>
@@ -154,10 +154,8 @@ export default function Experience() {
 /* ── Experience Card ─────────────────────────────────────────── */
 function ExperienceCard({
   experience: exp,
-  index,
 }: {
   experience: Experience;
-  index: number;
 }) {
   return (
     <motion.div variants={cardVariants} className="relative sm:pl-14 md:pl-16">

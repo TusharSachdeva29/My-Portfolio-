@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Trophy, Code, TrendingUp } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /* ═══════════════════════════════════════════════════════════════ */

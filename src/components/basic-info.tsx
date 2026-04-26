@@ -5,6 +5,7 @@ import { Bold } from "./ui/bold";
 import { ContactUs } from "./ui/contact-us";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function BasicInfo() {
   useTheme();
@@ -106,10 +107,12 @@ export default function BasicInfo() {
             className="w-full md:w-[45%] lg:w-2/5 flex justify-center items-center mt-8 md:mt-0 z-40"
           >
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-[6px] border-neutral-100 dark:border-neutral-800 shadow-2xl group">
-              <img
+              <Image
                 src="/my-pic.jpg"
                 alt="Tushar Sachdeva"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                priority
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </motion.div>

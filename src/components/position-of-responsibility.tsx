@@ -4,7 +4,7 @@ import type React from "react";
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Calendar, Award, Users, Code, ChevronRight } from "lucide-react";
+import { Calendar, Award, Code, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 

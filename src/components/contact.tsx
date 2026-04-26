@@ -111,7 +111,7 @@ export default function Contact() {
             className="flex flex-col justify-center"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Let's build something amazing together.
+              Let&apos;s build something amazing together.
             </h2>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
               Whether you have a question, a project opportunity, or just want to
@@ -224,7 +224,7 @@ export default function Contact() {
               {status === "success" && (
                 <div className="flex items-center gap-2 text-emerald-500 text-sm font-medium mt-1">
                   <CheckCircle2 className="h-4 w-4" />
-                  <span>Message sent successfully! I'll be in touch soon.</span>
+                  <span>Message sent successfully! I&apos;ll be in touch soon.</span>
                 </div>
               )}
 
