@@ -8,7 +8,7 @@ import Education from "@/components/education";
 import Experience from "@/components/experience";
 import POR from "@/components/position-of-responsibility";
 import Projects from "@/components/projects";
-import HoverLines from "@/components/ui/hover-line";
+import Navbar from "@/components/ui/navbar";
 import { Separator } from "@/components/ui/separator";
 import ThemeButton from "@/components/ui/theme-changer";
 
@@ -20,7 +20,7 @@ const headings = [
   "Projects",
   "Coding Profiles",
   "Education",
-  "Achivements",
+  "Achievements",
   "Positions Of Responsibility",
   "Contact",
 ];
@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <div className="relative max-w-screen overflow-x-hidden overflow-y-scroll no-scrollbar flex flex-col justify-center items-center">
         <ThemeButton />
-        <HoverLines headings={headings} />
+        <Navbar headings={headings} />
         <BasicInfo />
         <Separator className="w-[calc(100%-26rem)] my-16" />
         <About />
