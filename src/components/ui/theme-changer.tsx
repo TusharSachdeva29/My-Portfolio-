@@ -27,12 +27,14 @@ export default function ThemeButton() {
     <div className="relative z-[999] w-full">
       <motion.div
         ref={themeChangerRef}
-        className="fixed h-20 w-full p-4"
+        className="fixed top-0 left-0 w-full p-4 pointer-events-none flex justify-start"
         initial="hidden"
         animate={themeChangerInView ? "visible" : "hidden"}
         variants={themeChangerAnimation}
       >
-        <ThemeChanger />
+        <div className="pointer-events-auto">
+          <ThemeChanger />
+        </div>
       </motion.div>
     </div>
   );
