@@ -43,7 +43,7 @@ const platforms: PlatformStat[] = [
   {
     platform: "Codeforces",
     label: "Codeforces",
-    value: "1500+",
+    value: "1600+",
     accentColor: "#3B82F6",
     accentGlow: "rgba(59,130,246,0.15)",
     url: "https://codeforces.com/profile/TusharSachdeva29",
@@ -56,7 +56,7 @@ const platforms: PlatformStat[] = [
       { label: "Rating", value: "1503" },
       { label: "Problems", value: "600+" },
       { label: "Contests", value: "50+" },
-      { label: "Title", value: "Specialist" },
+      { label: "Title", value: "Expert" },
     ],
   },
   {
@@ -74,7 +74,7 @@ const platforms: PlatformStat[] = [
     stats: [
       { label: "Rating", value: "1800" },
       { label: "Problems", value: "116" },
-      { label: "Contests", value: "31" },
+      { label: "Contests", value: "25+" },
       { label: "Title", value: "4★" },
     ],
   },

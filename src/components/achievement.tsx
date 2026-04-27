@@ -28,24 +28,6 @@ interface AchievementData {
 
 const achievements: AchievementData[] = [
   {
-    id: "algo-university",
-    title: "National Scholar",
-    event: "Algo University",
-    metricValue: "70",
-    metricLabel: "Rank",
-    metricSub: "out of 20,000 applicants",
-    badge: "Top 0.35%",
-    description: "Awarded a ₹1,00,000 merit-based scholarship.",
-    bullets: [
-      "Distinguished among the highest 0.35% of applicants nationwide.",
-      "Selected after solving two rigorous algorithmic coding challenges.",
-      "Successfully cleared the final personal interview round.",
-    ],
-    accentColor: "#8B5CF6", // Violet
-    accentGlow: "rgba(139,92,246,0.15)",
-    icon: <Medal className="h-7 w-7 md:h-8 md:w-8" />,
-  },
-  {
     id: "amazon-hackon",
     title: "National Finalist",
     event: "Amazon HackOn",
@@ -62,6 +44,24 @@ const achievements: AchievementData[] = [
     accentColor: "#FF9900", // Amazon Orange
     accentGlow: "rgba(255,153,0,0.15)",
     icon: <Trophy className="h-7 w-7 md:h-8 md:w-8" />,
+  },
+  {
+    id: "algo-university",
+    title: "National Scholar",
+    event: "Algo University",
+    metricValue: "70",
+    metricLabel: "Rank",
+    metricSub: "out of 20,000 applicants",
+    badge: "Top 0.35%",
+    description: "Awarded a ₹1,00,000 merit-based scholarship.",
+    bullets: [
+      "Distinguished among the highest 0.35% of applicants nationwide.",
+      "Selected after solving two rigorous algorithmic coding challenges.",
+      "Successfully cleared the final personal interview round.",
+    ],
+    accentColor: "#8B5CF6", // Violet
+    accentGlow: "rgba(139,92,246,0.15)",
+    icon: <Medal className="h-7 w-7 md:h-8 md:w-8" />,
   },
   {
     id: "ieee-paper",
