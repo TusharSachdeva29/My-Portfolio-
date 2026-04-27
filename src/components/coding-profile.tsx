@@ -53,7 +53,7 @@ const platforms: PlatformStat[] = [
       </svg>
     ),
     stats: [
-      { label: "Rating", value: "1503" },
+      { label: "Rating", value: "1633" },
       { label: "Problems", value: "600+" },
       { label: "Contests", value: "50+" },
       { label: "Title", value: "Expert" },
