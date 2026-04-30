@@ -624,6 +624,167 @@ export const projects: ProjectData[] = [
     ],
     githubLink: "https://github.com/TusharSachdeva29/blog-space",
   },
+  {
+    slug: "cpp-online-compiler",
+    name: "C++ Online Compiler",
+    category: "Full Stack",
+    about:
+      "The C++ Online Compiler is a full-stack, web-based development environment that allows users to write, compile, and execute C++ code directly within their browser. Built entirely from scratch, it removes the friction of local compiler setups by providing a seamless, real-time coding experience with instant output feedback and isolated execution.",
+    techStack: ["React", "Tailwind CSS", "Node.js", "Express.js"],
+    features: [
+      {
+        title: "Real-Time Execution",
+        description:
+          "Write C++ code and execute it instantly with results streamed directly to the browser.",
+      },
+      {
+        title: "Comprehensive Error Handling",
+        description:
+          "Captures and cleanly displays both standard output (stdout) and compilation/runtime errors (stderr).",
+      },
+      {
+        title: "Isolated Processing",
+        description:
+          "Executes user-submitted code securely utilizing Node.js child processes.",
+      },
+      {
+        title: "Dynamic File Management",
+        description:
+          "Uses the fs module to handle the creation and cleanup of temporary .cpp files on the server automatically.",
+      },
+      {
+        title: "Modern Interface",
+        description:
+          "A responsive, developer-friendly UI built with React.",
+      },
+    ],
+    architecture: [
+      {
+        title: "Client Layer",
+        description:
+          "The React frontend acts as the user interface, capturing code input and sending it to the backend via a REST API payload.",
+      },
+      {
+        title: "File Processing",
+        description:
+          "Upon receiving the request, the Express backend uses the fs module to write the raw string into a temporary .cpp file on the server.",
+      },
+      {
+        title: "Compilation & Execution Pipeline",
+        description:
+          "The child_process module is used to spawn a system shell command. It first runs the compiler (like g++) on the .cpp file. If successful, it executes the resulting binary file.",
+      },
+      {
+        title: "Feedback Loop",
+        description:
+          "The backend listens to the child process's data streams, captures the output or compilation errors, and sends it back to the React frontend as a structured JSON response.",
+      },
+    ],
+    futureImprovements: [
+      {
+        title: "Docker Sandboxing",
+        description:
+          "Wrap the execution layer in isolated, ephemeral Docker containers to provide strict security limits on memory, CPU, and network access to prevent malicious code execution.",
+      },
+      {
+        title: "Monaco Editor Integration",
+        description:
+          "Upgrade the code input area with the Monaco Editor (the engine behind VS Code) to provide syntax highlighting, line numbers, and intelligent auto-completion.",
+      },
+      {
+        title: "Execution Timeout Limits",
+        description:
+          "Implement strict timeout rules on the child processes to automatically kill programs that enter infinite loops, preventing server resource exhaustion.",
+      },
+    ],
+    githubLink: "https://github.com/TusharSachdeva29/Cpp-Compiler",
+  },
+  {
+    slug: "pravah-x",
+    name: "Pravah-X",
+    category: "Full Stack",
+    about:
+      "Pravah-X is a comprehensive, full-stack web platform designed specifically for beginner and intermediate competitive programmers. It eliminates the friction of environment setup by unifying a personalized IDE, an AI debugging assistant, daily problem tracking, and live Codeforces analytics into a single, intuitive interface. By streamlining the workflow, Pravah-X allows developers to focus entirely on algorithmic problem-solving rather than boilerplate configuration.",
+    techStack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "PostgreSQL",
+      "Prisma ORM",
+      "NextAuth.js v4",
+      "Recharts",
+      "Chart.js",
+    ],
+    features: [
+      {
+        title: "Codeforces Analytics Dashboard",
+        description:
+          "Real-time synchronization with the Codeforces API to display user rating history, an activity heatmap, and recent submission verdicts.",
+      },
+      {
+        title: "Personalized IDE & AI Assistant",
+        description:
+          "An integrated coding environment pre-loaded with standard C++ templates, coupled with an AI chatbot to help debug code and explain complex algorithmic concepts.",
+      },
+      {
+        title: "Structured Progression",
+        description:
+          "Features a curated Problem of the Day, a topic-wise learning roadmap, and a 30-day visual streak tracker to build consistency.",
+      },
+      {
+        title: "Contest Management",
+        description:
+          "A real-time feed of upcoming Codeforces rounds complete with countdowns so users never miss a competition.",
+      },
+      {
+        title: "Secure Authentication",
+        description:
+          "Robust credential and OAuth support handled via NextAuth.js, with protected routes managed by Next.js middleware.",
+      },
+    ],
+    architecture: [
+      {
+        title: "Client Layer",
+        description:
+          "Built on the Next.js App Router using React 19 and Tailwind CSS, featuring a responsive UI with smooth framer-motion transitions and dynamic data visualization via Recharts.",
+      },
+      {
+        title: "Serverless Backend",
+        description:
+          "Utilizes Next.js API routes to handle custom backend logic, user registration, and secure communication with external APIs.",
+      },
+      {
+        title: "Data Persistence",
+        description:
+          "A PostgreSQL database managed by Prisma ORM ensures type-safe querying and reliable storage for user sessions, profiles, and learning path progress.",
+      },
+      {
+        title: "External Integrations",
+        description:
+          "Directly interfaces with the official Codeforces API to fetch and cache live user statistics, contest schedules, and submission data.",
+      },
+    ],
+    futureImprovements: [
+      {
+        title: "In-Browser Code Execution",
+        description:
+          "Integrate a secure sandboxed backend (e.g., using Docker or a third-party compilation API) to allow users to compile and run their code directly within the Pravah-X IDE.",
+      },
+      {
+        title: "Multi-Platform Support",
+        description:
+          "Expand the analytics and problem-tracking capabilities to include other major competitive programming platforms like LeetCode and AtCoder.",
+      },
+      {
+        title: "Advanced AI Code Review",
+        description:
+          "Upgrade the AI assistant to perform automated full-code analysis, providing detailed feedback on time and space complexity and suggesting optimal algorithmic approaches.",
+      },
+    ],
+    githubLink: "https://github.com/TusharSachdeva29/Pravah-X",
+  },
 
   // ─── AI/ML ────────────────────────────────────────────────────
   {
@@ -873,6 +1034,91 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/shorts_maker",
+  },
+  {
+    slug: "pso-ai-optimization",
+    name: "PSO-AI-Optimization",
+    category: "AI/ML",
+    about:
+      "PSO-AI-Optimization is an experimental research project that applies Particle Swarm Optimization (PSO)—a bio-inspired metaheuristic algorithm—to the complex problem of autonomous robot path planning. Instead of relying on traditional algorithms like A* or Dijkstra, this project utilizes swarm intelligence to discover near-optimal, collision-free routes across diverse, structured grid environments (like warehouses and mazes). The goal is to dynamically find the shortest, safest, and most energy-efficient paths using collective swarm behavior.",
+    techStack: ["Python", "NumPy", "Matplotlib", "Jupyter Notebook"],
+    features: [
+      {
+        title: "Custom PSO Engine",
+        description:
+          "A from-scratch implementation of Particle Swarm Optimization featuring configurable swarm sizes, iteration counts, and customizable weights.",
+      },
+      {
+        title: "Multi-Objective Fitness Evaluation",
+        description:
+          "Calculates composite scores for paths based on distance, travel time, energy expenditure, and collision penalties.",
+      },
+      {
+        title: "Environment Simulation",
+        description:
+          "Pre-configured to test the algorithm across 4 distinct layouts: Original, Maze, Corridor, and Warehouse.",
+      },
+      {
+        title: "Adaptive Path Mutation",
+        description:
+          "Employs a path mutation operator that dynamically perturbs waypoints to ensure diversified exploration of the solution space.",
+      },
+      {
+        title: "Analytical Visualization",
+        description:
+          "Features fitness convergence tracking to analyze algorithm behavior over time, paired with clear, color-coded Matplotlib grid visualizations.",
+      },
+    ],
+    architecture: [
+      {
+        title: "Initialization",
+        description:
+          "Generates a swarm of N particles, where each particle holds a randomly generated path through the grid.",
+      },
+      {
+        title: "Fitness Evaluation",
+        description:
+          "Every path is scored using a configurable fitness formula combining weighted distance, time, energy, and collision penalties.",
+      },
+      {
+        title: "Best-State Tracking",
+        description:
+          "Each particle remembers its personal best path, while the system tracks the swarm's overall global best.",
+      },
+      {
+        title: "Mutation & Exploration",
+        description:
+          "To explore new routes, the algorithm randomly mutates (perturbs) waypoints in the personal best paths rather than using standard velocity vectors.",
+      },
+      {
+        title: "Convergence",
+        description:
+          "This loop repeats for a set number of iterations, continuously refining the routes until the global best path is finalized and returned.",
+      },
+    ],
+    futureImprovements: [
+      {
+        title: "True Velocity-Based PSO",
+        description:
+          "Upgrade the path mutation operator to utilize proper continuous or discrete PSO velocity vectors for mathematically strict swarm movement.",
+      },
+      {
+        title: "Dynamic Obstacles",
+        description:
+          "Implement real-time moving obstacles during the optimization phase to simulate unpredictable agents (like moving forklifts or human workers) on a warehouse floor.",
+      },
+      {
+        title: "Hybridization & Benchmarking",
+        description:
+          "Combine the PSO algorithm with an A* algorithm for better initial population seeding, and build a benchmarking suite to directly compare performance against Genetic Algorithms and Ant Colony Optimization (ACO).",
+      },
+      {
+        title: "Multi-Robot Coordination",
+        description:
+          "Expand the mathematical model to solve multi-agent path planning, ensuring collision avoidance not just with walls, but between multiple robots operating simultaneously.",
+      },
+    ],
+    githubLink: "https://github.com/TusharSachdeva29/PSO-ai-optimization",
   },
 
   // ─── GenAI ────────────────────────────────────────────────────
