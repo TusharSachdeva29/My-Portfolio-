@@ -1,4 +1,5 @@
 export type Category =
+  | "Frontend"
   | "Full Stack"
   | "GenAI"
   | "AI/ML"
@@ -23,9 +24,11 @@ export interface ProjectData {
   githubLink: string;
   liveDemo?: string;
   researchPaper?: string;
+  isPortfolio?: boolean;
 }
 
 export const CATEGORIES: Category[] = [
+  "Frontend",
   "Full Stack",
   "GenAI",
   "AI/ML",
@@ -35,6 +38,48 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const projects: ProjectData[] = [
+  // ─── Frontend ─────────────────────────────────────────────────
+  {
+    slug: "my-portfolio",
+    name: "My Portfolio",
+    category: "Frontend",
+    isPortfolio: true,
+    about:
+      "A personal archive of my journey through college and beyond.",
+    techStack: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "shadcn/ui",
+    ],
+    features: [
+      {
+        title: "Animated UI",
+        description: "Smooth page transitions and micro-animations powered by Framer Motion.",
+      },
+      {
+        title: "Dark / Light Mode",
+        description: "Fully themed dark and light modes with a seamless toggle.",
+      },
+      {
+        title: "Project Showcase",
+        description: "Category-filtered project grid with individual deep-dive detail pages.",
+      },
+      {
+        title: "Fully Responsive",
+        description: "Optimized layout across all screen sizes from mobile to widescreen.",
+      },
+    ],
+    futureImprovements: [
+      {
+        title: "Blog Section",
+        description: "Add a personal blog to share technical write-ups and project retrospectives.",
+      },
+    ],
+    githubLink: "https://github.com/TusharSachdeva29/My-Portfolio-",
+  },
+
   // ─── Full Stack ───────────────────────────────────────────────
   {
     slug: "code-x",
@@ -218,7 +263,7 @@ export const projects: ProjectData[] = [
   {
     slug: "udaan-ai",
     name: "UDAAN_AI",
-    category: "Full Stack",
+    category: "GenAI",
     about:
       "UDAAN_AI is a unified, AI-powered GPS, drone, and air traffic intelligence platform designed to revolutionize how government and aviation agencies manage real-time logistics. By seamlessly integrating high-frequency telemetry data into a single ecosystem, the platform delivers real-time tracking, predictive analytics, and smart alerting. It bridges the gap between ground fleets and unmanned aerial vehicles (UAVs), providing next-generation transparency, efficiency, and automation for complex operational systems.",
     techStack: [

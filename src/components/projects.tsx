@@ -173,8 +173,22 @@ function ProjectCard({
   project: ProjectData;
   index: number;
 }) {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (project.isPortfolio) {
+      e.preventDefault();
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 3000);
+    }
+  };
+
   return (
-    <Link href={`/projects/${project.slug}`} className="block h-full">
+    <Link 
+      href={`/projects/${project.slug}`} 
+      className="block h-full"
+      onClick={handleClick}
+    >
       <motion.div
         className={cn(
           "group relative flex flex-col h-full overflow-hidden rounded-2xl border bg-background transition-all duration-500",
@@ -252,11 +266,17 @@ function ProjectCard({
           </div>
 
           {/* ── View Project link ── */}
-          <div className="flex items-center justify-between pt-4 border-t border-border/60">
-            <span className="text-sm font-medium text-[#565bac] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
-              View Project
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </span>
+          <div className="flex items-center justify-between pt-4 border-t border-border/60 h-[48px]">
+            {project.isPortfolio && showMessage ? (
+              <span className="text-sm font-bold text-[#565bac] flex items-center gap-1.5 transition-all duration-300">
+                you are already here nothing more to view
+              </span>
+            ) : (
+              <span className="text-sm font-medium text-[#565bac] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
+                View Project
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            )}
 
             {/* Live badge indicator */}
             {project.liveDemo && (

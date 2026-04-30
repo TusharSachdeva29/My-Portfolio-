@@ -75,7 +75,7 @@ export default function BasicInfo() {
               className="text-neutral-800 dark:text-neutral-200 ml-2 text-sm md:text-lg lg:text-3xl z-40"
               variants={fadeInUp}
             >
-            Pre final year student at Netaji Subhash University of Technology.
+              Pre final year student at Netaji Subhash University of Technology.
             </motion.p>
 
             <motion.p
@@ -85,7 +85,7 @@ export default function BasicInfo() {
             >
               Over the past years at NSUT, I&apos;ve excelled in{" "}
               <Bold>full-stack development</Bold>, <Bold>low-level programming</Bold> with C++ servers
-        , <Bold>competitive coding</Bold>, {" "}
+              , <Bold>competitive coding</Bold>, {" "}
               <Bold>maching learning and deep learning</Bold>, <Bold>Distributed systems</Bold> showcasing expertise through projects
               and a strong coding profile.
             </motion.p>
@@ -102,7 +102,7 @@ export default function BasicInfo() {
           </div>
 
           {/* Right Image Content */}
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="w-full md:w-[45%] lg:w-2/5 flex justify-center items-center mt-8 md:mt-0 z-40"
           >
