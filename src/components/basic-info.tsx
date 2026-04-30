@@ -3,7 +3,7 @@
 import { useTheme } from "@/hooks/use-theme";
 import { Bold } from "./ui/bold";
 import { ContactUs } from "./ui/contact-us";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
+// import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
