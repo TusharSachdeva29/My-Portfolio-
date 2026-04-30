@@ -3,6 +3,7 @@
 import { useTheme } from "@/hooks/use-theme";
 import { Bold } from "./ui/bold";
 import { ContactUs } from "./ui/contact-us";
+import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
@@ -93,11 +94,27 @@ export default function BasicInfo() {
             <motion.div
               ref={contactRef}
               variants={fadeInUp}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="z-50"
+              className="z-50 flex flex-wrap items-center gap-4"
             >
-              <ContactUs />
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <ContactUs />
+              </motion.div>
+              <motion.a 
+                href="https://drive.google.com/file/d/180SX4ncOZcia3755hEyvf7DbvNSRaTAg/view?usp=sharing" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block mt-4"
+                whileHover={{ scale: 1.05 }} 
+                whileTap={{ scale: 0.95 }}
+              >
+                <HoverBorderGradient
+                  containerClassName="rounded-full"
+                  as="div"
+                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 cursor-pointer"
+                >
+                  <span>View Resume</span>
+                </HoverBorderGradient>
+              </motion.a>
             </motion.div>
           </div>
 
