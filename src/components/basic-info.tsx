@@ -99,7 +99,7 @@ export default function BasicInfo() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <ContactUs />
               </motion.div>
-              <motion.a 
+              {/* <motion.a 
                 href="https://drive.google.com/file/d/180SX4ncOZcia3755hEyvf7DbvNSRaTAg/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer" 
@@ -114,7 +114,7 @@ export default function BasicInfo() {
                 >
                   <span>View Resume</span>
                 </HoverBorderGradient>
-              </motion.a>
+              </motion.a> */}
             </motion.div>
           </div>
 
