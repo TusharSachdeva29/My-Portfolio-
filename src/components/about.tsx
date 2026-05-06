@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -202,15 +202,19 @@ export default function About() {
               <ArrowRight className="h-5 sm:h-6 w-5 sm:w-6 flex items-center justify-center" />
               <div className="flex gap-3 sm:gap-4">
                 <motion.a
-                  href="#"
+                  href="https://www.instagram.com/tushar_._sachdeva/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-[#565bac] transition-colors"
                   variants={socialIconAnimation}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 >
-                  {/* <Instagram className="h-5 sm:h-6 w-5 sm:w-6" /> */}
+                  <Instagram className="h-5 sm:h-6 w-5 sm:w-6" />
                 </motion.a>
                 <motion.a
                   href="https://github.com/TusharSachdeva29"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-[#565bac] transition-colors"
                   variants={socialIconAnimation}
                   whileHover={{ scale: 1.2, rotate: 5 }}
@@ -219,6 +223,8 @@ export default function About() {
                 </motion.a>
                 <motion.a
                   href="https://www.linkedin.com/in/tushar-sachdeva-573891287/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-[#565bac] transition-colors"
                   variants={socialIconAnimation}
                   whileHover={{ scale: 1.2, rotate: 5 }}
