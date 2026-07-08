@@ -117,7 +117,7 @@ export default function Education() {
 
             <AnimatedCourseCard
               icon={<Server />}
-              title="Macine Learning"
+              title="Machine Learning"
               description="Supervised and unsupervised learning, regression, classification, ML-algos and neural networks."
               cg={9}
               delay={0.9}
@@ -196,7 +196,7 @@ function MainEducationCard() {
               <div className="flex items-center gap-2 mt-1">
                 <span className="font-medium">CGPA:</span>
                 <Badge variant="outline" className="font-semibold">
-                  8.3/10
+                  8.38/10
                 </Badge>
               </div>
             </div>

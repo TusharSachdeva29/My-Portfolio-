@@ -51,7 +51,7 @@ export default function PositionsOfResponsibility() {
         id: 2,
         title: "Member at Algorithmic Society of NSUT(ASN)",
         organization:
-          "Web developnment and competitive programming",
+          "Web development and competitive programming",
         period: "2025 - present",
         icon: <Calendar className="h-6 w-6" />,
         color: "bg-green-500",

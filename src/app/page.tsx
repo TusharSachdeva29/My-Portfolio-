@@ -19,8 +19,8 @@ const headings = [
   "Experience",
   "Projects",
   "Coding Profiles",
-  "Education",
   "Achievements",
+  "Education",
   "Positions Of Responsibility",
   "Contact",
 ];

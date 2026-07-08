@@ -13,6 +13,13 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 /* ── Data ────────────────────────────────────────────────────── */
+interface ExperienceProject {
+  name: string;
+  tagline?: string;
+  summary?: string;
+  highlights: string[];
+}
+
 interface Experience {
   role: string;
   company: string;
@@ -22,10 +29,58 @@ interface Experience {
   duration: string;
   location: string;
   techStack: string[];
-  highlights: string[];
+  highlights?: string[];
+  projects?: ExperienceProject[];
 }
 
 const experiences: Experience[] = [
+  {
+    role: "Software Engineer Intern",
+    company: "Microsoft",
+    companyUrl: "https://www.microsoft.com/",
+    type: "Internship",
+    period: "May 2026 – Jul 2026",
+    duration: "2 months",
+    location: "Noida, India",
+    techStack: [
+      "C#",
+      ".NET 8",
+      "Azure OpenAI",
+      "MCP",
+      "PowerShell",
+      "RAG",
+      "Azure DevOps",
+      "WiX",
+    ],
+    projects: [
+      {
+        name: "TitanShell Copilot",
+        tagline: "Primary Project",
+        summary:
+          "Conversational AI on-call assistant that lets datacenter engineers triage live cluster state in natural language.",
+        highlights: [
+          "Architected and shipped an AI on-call assistant in C# / .NET 8 that integrates Azure OpenAI (GPT) with 77 read-only tools across 9 backend services via the Model Context Protocol (MCP) — reducing routine incident triage from ~15 minutes of multi-tool context-switching to under 10 seconds.",
+          "Designed a dual-runtime architecture (.NET 8 orchestrator + .NET Framework 4.7.2 server) hosting an in-process PowerShell runspace that caches an authenticated session for the process lifetime, eliminating per-call re-authentication and cutting typical query latency to 1–3 s (from a 5–15 s cold start).",
+          "Built a streaming ReAct agent loop (Server-Sent Events) with multiplexed tool-calling over two MCP servers, orchestrating up to 16 reason–act–observe iterations per query while holding the production dependency footprint to a single NuGet package.",
+          "Engineered \"read-only by construction\" security with 4 independent enforcement layers and caller-identity passthrough across 4 auth boundaries (Kerberos → dSTS, OAuth Bearer), guaranteeing zero write operations with no standing privileges.",
+          "Optimized LLM context efficiency by replacing multi-megabyte raw API payloads with 40+ schema-bounded, filtered tools — shrinking responses from ~18,000 rows to ~50 and eliminating HTTP 429 token-limit failures.",
+          "Integrated multi-source RAG grounding (Azure DevOps code + wiki search via MCP), enabling the agent to cite source-of-truth runbooks/TSGs and converting tribal knowledge across ~280 PowerShell cmdlets into shipped, auditable tooling.",
+        ],
+      },
+      {
+        name: "DcmToolsInstaller",
+        tagline: "Side Project",
+        summary:
+          "One-click MSI that consolidates previously-separate internal datacenter tool installations into a single zero-touch package.",
+        highlights: [
+          "Built a Windows MSI installer with WiX 5 and a self-elevating PowerShell orchestrator, consolidating separate install flows for TitanShell and DCM Explorer into a single ~39 MB package and reducing setup from 8+ manual steps to 2 clicks.",
+          "Designed an install pipeline (msiexec → CustomAction → CloudVault bootstrap → artifact fetch → deploy) that always pulls the latest signed drops at install time, eliminating version drift across engineer machines.",
+          "Delivered per-tool transcript logging and a JSON install manifest for auditable diagnostics, targeting under 5 minutes time-to-first usage for new engineers onboarding to internal tooling.",
+          "Established an extensible packaging pattern (NuGet restore → WiX harvest → MSI build) so future internal tools can plug into a common distribution channel without redesigning setup.",
+        ],
+      },
+    ],
+  },
   {
     role: "Software Engineer Intern",
     company: "Igniting Minds Organization®",
@@ -237,24 +292,80 @@ function ExperienceCard({
             ))}
           </div>
 
-          {/* Highlights */}
-          <div className="space-y-3">
-            {exp.highlights.map((highlight, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * i, duration: 0.4 }}
-                className="flex items-start gap-3 group/item"
-              >
-                <ChevronRight className="h-4 w-4 mt-1 shrink-0 text-[#565bac]/60 group-hover/item:text-[#565bac] transition-colors" />
-                <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed">
-                  {highlight}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Highlights or Projects */}
+          {exp.projects ? (
+            <div className="space-y-7">
+              {exp.projects.map((project, pIdx) => (
+                <div
+                  key={project.name}
+                  className={cn(
+                    pIdx > 0 &&
+                      "pt-6 border-t border-dashed border-neutral-200/70 dark:border-neutral-800/70"
+                  )}
+                >
+                  {/* Project header */}
+                  <div className="mb-3">
+                    <div className="flex items-center flex-wrap gap-2 mb-1.5">
+                      <span className="h-2 w-2 rounded-full bg-[#565bac] shrink-0" />
+                      <h4 className="text-base md:text-lg font-bold text-foreground tracking-tight">
+                        {project.name}
+                      </h4>
+                      {project.tagline && (
+                        <Badge
+                          variant="outline"
+                          className="text-[10px] uppercase tracking-widest font-semibold border-[#565bac]/30 text-[#565bac]"
+                        >
+                          {project.tagline}
+                        </Badge>
+                      )}
+                    </div>
+                    {project.summary && (
+                      <p className="text-xs md:text-sm text-muted-foreground italic pl-4 leading-relaxed">
+                        {project.summary}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Project bullets */}
+                  <div className="space-y-3">
+                    {project.highlights.map((highlight, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.05 * i, duration: 0.4 }}
+                        className="flex items-start gap-3 group/item"
+                      >
+                        <ChevronRight className="h-4 w-4 mt-1 shrink-0 text-[#565bac]/60 group-hover/item:text-[#565bac] transition-colors" />
+                        <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed">
+                          {highlight}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {exp.highlights?.map((highlight, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * i, duration: 0.4 }}
+                  className="flex items-start gap-3 group/item"
+                >
+                  <ChevronRight className="h-4 w-4 mt-1 shrink-0 text-[#565bac]/60 group-hover/item:text-[#565bac] transition-colors" />
+                  <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed">
+                    {highlight}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>

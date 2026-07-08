@@ -46,6 +46,25 @@ const achievements: AchievementData[] = [
     icon: <Trophy className="h-7 w-7 md:h-8 md:w-8" />,
   },
   {
+    id: "thales-gentech",
+    title: "Top 16 Finalist",
+    event: "Thales GenTech India Hackathon 2025",
+    metricValue: "16",
+    metricLabel: "Rank",
+    metricSub: "out of 10,868 participants",
+    badge: "Top 0.15%",
+    description:
+      "Built an intelligent aerial asset monitoring platform for logistics and airspace visibility.",
+    bullets: [
+      "Real-time GPS & UAV tracking with air traffic monitoring and aerial geofencing.",
+      "Predictive analytics dashboards, smart alerts, and event management with role-based access control.",
+      "Historical flight replay and route analysis for auditable, data-driven operations.",
+    ],
+    accentColor: "#0033A0", // Thales Blue
+    accentGlow: "rgba(0,51,160,0.15)",
+    icon: <Trophy className="h-7 w-7 md:h-8 md:w-8" />,
+  },
+  {
     id: "algo-university",
     title: "National Scholar",
     event: "Algo University",
