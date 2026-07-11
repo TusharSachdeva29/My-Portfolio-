@@ -100,7 +100,7 @@ export default function BasicInfo() {
                 <ContactUs />
               </motion.div>
                   <motion.a 
-                    href="https://drive.google.com/file/d/180SX4ncOZcia3755hEyvf7DbvNSRaTAg/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1VMXJ_0gIxBiJDbp9kDwEsPRo0jNO6omn/view?usp=sharing" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="block mt-4"
