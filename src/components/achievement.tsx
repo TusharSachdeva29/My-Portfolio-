@@ -100,7 +100,7 @@ const achievements: AchievementData[] = [
     accentGlow: "rgba(0,98,155,0.15)",
     icon: <FileText className="h-7 w-7 md:h-8 md:w-8" />,
     linkText: "View Paper",
-    url: "#",
+    url: "https://ieeexplore.ieee.org/document/11383744",
   },
   {
     id: "mahindra",
@@ -119,6 +119,8 @@ const achievements: AchievementData[] = [
     accentColor: "#E31837", // Mahindra Red
     accentGlow: "rgba(227,24,55,0.15)",
     icon: <Target className="h-7 w-7 md:h-8 md:w-8" />,
+    linkText: "Watch Demo Video",
+    url: "https://drive.google.com/file/d/1IOYJnjq7NzmI6EFnw62utSdcZ-wdJF8G/view?usp=sharing",
   },
 ];
 

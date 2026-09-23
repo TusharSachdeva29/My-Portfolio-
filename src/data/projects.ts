@@ -452,7 +452,7 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/Marg-Gps",
-    liveDemo: "https://www.youtube.com/watch?v=Dya2MEnw0RQ",
+    liveDemo: "https://drive.google.com/file/d/1IOYJnjq7NzmI6EFnw62utSdcZ-wdJF8G/view?usp=sharing",
   },
   {
     slug: "fire-tv",

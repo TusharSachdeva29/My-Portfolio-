@@ -8,8 +8,21 @@ import {
   MapPin,
   ChevronRight,
   ExternalLink,
+  Network,
+  Maximize2,
+  ZoomIn,
+  Video,
+  Play,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 /* ── Data ────────────────────────────────────────────────────── */
@@ -18,6 +31,8 @@ interface ExperienceProject {
   tagline?: string;
   summary?: string;
   highlights: string[];
+  architectureImage?: string;
+  architectureDriveUrl?: string;
 }
 
 interface Experience {
@@ -31,6 +46,7 @@ interface Experience {
   techStack: string[];
   highlights?: string[];
   projects?: ExperienceProject[];
+  demoVideo?: string;
 }
 
 const experiences: Experience[] = [
@@ -66,6 +82,9 @@ const experiences: Experience[] = [
           "Optimized LLM context efficiency by replacing multi-megabyte raw API payloads with 40+ schema-bounded, filtered tools — shrinking responses from ~18,000 rows to ~50 and eliminating HTTP 429 token-limit failures.",
           "Integrated multi-source RAG grounding (Azure DevOps code + wiki search via MCP), enabling the agent to cite source-of-truth runbooks/TSGs and converting tribal knowledge across ~280 PowerShell cmdlets into shipped, auditable tooling.",
         ],
+        architectureImage: "/microsoft/architecture.png",
+        architectureDriveUrl:
+          "https://drive.google.com/file/d/1mx7Mxq0uqm6JY4yniQzEX-YX-5RbyjHR/view?usp=sharing",
       },
       {
         name: "DcmToolsInstaller",
@@ -109,6 +128,8 @@ const experiences: Experience[] = [
     period: "Apr 2025 – Jun 2025",
     duration: "3 months",
     location: "India · Remote",
+    demoVideo:
+      "https://drive.google.com/file/d/1IOYJnjq7NzmI6EFnw62utSdcZ-wdJF8G/view?usp=sharing",
     techStack: [
       "TypeScript",
       "Node.js",
@@ -260,6 +281,18 @@ function ExperienceCard({
                 >
                   {exp.type}
                 </Badge>
+                {exp.demoVideo && (
+                  <a
+                    href={exp.demoVideo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 border border-red-500/20 transition-colors"
+                  >
+                    <Play className="h-3 w-3 fill-current" />
+                    Demo Video
+                    <ExternalLink className="h-2.5 w-2.5" />
+                  </a>
+                )}
               </div>
             </div>
 
@@ -344,6 +377,182 @@ function ExperienceCard({
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Architecture Diagram (Interactive Modal + Preview) */}
+                  {project.architectureImage && (
+                    <div className="mt-6 pt-5 border-t border-dashed border-neutral-200/70 dark:border-neutral-800/70">
+                      <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <Network className="h-4 w-4 text-[#565bac]" />
+                          <span className="text-xs md:text-sm font-semibold text-foreground tracking-tight">
+                            System Architecture
+                          </span>
+                          <Badge
+                            variant="outline"
+                            className="text-[10px] uppercase tracking-wider font-semibold border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+                          >
+                            Interactive
+                          </Badge>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <button
+                                type="button"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#565bac]/10 text-[#565bac] hover:bg-[#565bac]/20 transition-all duration-200 cursor-pointer"
+                              >
+                                <Maximize2 className="h-3.5 w-3.5" />
+                                Expand Diagram
+                              </button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-5xl w-[95vw] max-h-[92vh] p-4 sm:p-6 overflow-hidden flex flex-col bg-background/95 backdrop-blur-xl border border-neutral-200 dark:border-neutral-800">
+                              <DialogHeader className="mb-3 shrink-0">
+                                <div className="flex items-center justify-between gap-4 pr-6">
+                                  <div>
+                                    <DialogTitle className="text-lg md:text-xl font-bold flex items-center gap-2">
+                                      <span className="h-2.5 w-2.5 rounded-full bg-[#565bac]" />
+                                      {project.name} — System Architecture
+                                    </DialogTitle>
+                                    <DialogDescription className="text-xs md:text-sm text-muted-foreground mt-1">
+                                      Dual-runtime architecture (.NET 8 orchestrator + .NET Framework 4.7.2 MCP server) with Azure OpenAI and Azure DevOps grounding
+                                    </DialogDescription>
+                                  </div>
+                                </div>
+                              </DialogHeader>
+
+                              {/* Scrollable image container */}
+                              <div className="relative flex-1 overflow-auto rounded-xl border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-900/5 dark:bg-black/50 p-2 sm:p-4 flex items-center justify-center min-h-[320px]">
+                                <img
+                                  src={project.architectureImage}
+                                  alt={`${project.name} Architecture`}
+                                  className="w-full h-auto object-contain max-h-[68vh] rounded-lg shadow-sm"
+                                />
+                              </div>
+
+                              {/* Modal footer with action links */}
+                              <div className="mt-3 pt-3 border-t border-neutral-200/70 dark:border-neutral-800/70 flex items-center justify-between flex-wrap gap-2 text-xs">
+                                <span className="text-muted-foreground">
+                                  Azure Datacenter On-Call Copilot · Model Context Protocol (MCP)
+                                </span>
+                                <div className="flex items-center gap-3">
+                                  <a
+                                    href={project.architectureImage}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground font-medium transition-colors"
+                                  >
+                                    <ZoomIn className="h-3.5 w-3.5" />
+                                    Original Image
+                                  </a>
+                                  {project.architectureDriveUrl && (
+                                    <a
+                                      href={project.architectureDriveUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-1.5 text-[#565bac] hover:text-[#464ba0] font-semibold transition-colors"
+                                    >
+                                      <ExternalLink className="h-3.5 w-3.5" />
+                                      Open in Google Drive
+                                    </a>
+                                  )}
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+
+                          {project.architectureDriveUrl && (
+                            <a
+                              href={project.architectureDriveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-neutral-100 dark:hover:bg-neutral-800/60 transition-colors"
+                              title="View on Google Drive"
+                            >
+                              <ExternalLink className="h-3.5 w-3.5" />
+                              <span className="hidden sm:inline">Drive</span>
+                            </a>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Interactive Thumbnail preview */}
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="group/archimg relative rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-900/5 dark:bg-black/40 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#565bac]/40">
+                            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900/40">
+                              <img
+                                src={project.architectureImage}
+                                alt={`${project.name} Architecture Diagram`}
+                                className="w-full h-full object-contain p-2 sm:p-3 transition-transform duration-500 group-hover/archimg:scale-[1.02]"
+                              />
+                              {/* Hover overlay hint */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover/archimg:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+                                <span className="text-white text-xs font-medium flex items-center gap-1.5">
+                                  <Maximize2 className="h-3.5 w-3.5" />
+                                  Click to inspect full architecture diagram
+                                </span>
+                                <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold">
+                                  High Resolution
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-5xl w-[95vw] max-h-[92vh] p-4 sm:p-6 overflow-hidden flex flex-col bg-background/95 backdrop-blur-xl border border-neutral-200 dark:border-neutral-800">
+                          <DialogHeader className="mb-3 shrink-0">
+                            <div className="flex items-center justify-between gap-4 pr-6">
+                              <div>
+                                <DialogTitle className="text-lg md:text-xl font-bold flex items-center gap-2">
+                                  <span className="h-2.5 w-2.5 rounded-full bg-[#565bac]" />
+                                  {project.name} — System Architecture
+                                </DialogTitle>
+                                <DialogDescription className="text-xs md:text-sm text-muted-foreground mt-1">
+                                  Dual-runtime architecture (.NET 8 orchestrator + .NET Framework 4.7.2 MCP server) with Azure OpenAI and Azure DevOps grounding
+                                </DialogDescription>
+                              </div>
+                            </div>
+                          </DialogHeader>
+
+                          <div className="relative flex-1 overflow-auto rounded-xl border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-900/5 dark:bg-black/50 p-2 sm:p-4 flex items-center justify-center min-h-[320px]">
+                            <img
+                              src={project.architectureImage}
+                              alt={`${project.name} Architecture`}
+                              className="w-full h-auto object-contain max-h-[68vh] rounded-lg shadow-sm"
+                            />
+                          </div>
+
+                          <div className="mt-3 pt-3 border-t border-neutral-200/70 dark:border-neutral-800/70 flex items-center justify-between flex-wrap gap-2 text-xs">
+                            <span className="text-muted-foreground">
+                              Azure Datacenter On-Call Copilot · Model Context Protocol (MCP)
+                            </span>
+                            <div className="flex items-center gap-3">
+                              <a
+                                href={project.architectureImage}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground font-medium transition-colors"
+                              >
+                                <ZoomIn className="h-3.5 w-3.5" />
+                                Original Image
+                              </a>
+                              {project.architectureDriveUrl && (
+                                <a
+                                  href={project.architectureDriveUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-[#565bac] hover:text-[#464ba0] font-semibold transition-colors"
+                                >
+                                  <ExternalLink className="h-3.5 w-3.5" />
+                                  Open in Google Drive
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -364,6 +573,28 @@ function ExperienceCard({
                   </p>
                 </motion.div>
               ))}
+
+              {/* Demo Video button for single experiences (e.g. Mahindra Logistics) */}
+              {exp.demoVideo && (
+                <div className="mt-5 pt-4 border-t border-dashed border-neutral-200/70 dark:border-neutral-800/70 flex items-center justify-between flex-wrap gap-3">
+                  <div className="flex items-center gap-2">
+                    <Video className="h-4 w-4 text-[#E31837]" />
+                    <span className="text-xs md:text-sm font-semibold text-foreground">
+                      Real-Time Fleet Tracking Demo
+                    </span>
+                  </div>
+                  <a
+                    href={exp.demoVideo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-semibold text-white bg-[#E31837] hover:bg-[#c9142e] shadow-md shadow-red-500/20 hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300"
+                  >
+                    <Play className="h-3.5 w-3.5 fill-current" />
+                    Watch Demo Video
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              )}
             </div>
           )}
         </div>
