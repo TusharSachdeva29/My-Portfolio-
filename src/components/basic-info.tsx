@@ -76,7 +76,7 @@ export default function BasicInfo() {
               className="text-neutral-800 dark:text-neutral-200 ml-2 text-sm md:text-lg lg:text-3xl z-40"
               variants={fadeInUp}
             >
-              Pre final year student at Netaji Subhash University of Technology.
+              final year student at Netaji Subhash University of Technology.
             </motion.p>
 
             <motion.p

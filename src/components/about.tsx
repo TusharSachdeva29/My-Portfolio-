@@ -20,7 +20,7 @@ export default function About() {
     "React",
     "Next.js",
     "Redux",
-    "Recoil",
+    // "Recoil",
     "Tailwind CSS",
     "ShadCN/UI",
 
