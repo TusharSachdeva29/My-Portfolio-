@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
@@ -92,6 +94,8 @@ export default function RootLayout({
           ⚠️ Warning: This portfolio has been under construction for 2 years… expected completion before my B.Tech degree expires. ,,
         </div> */}
         <MotionProvider>{children}</MotionProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
