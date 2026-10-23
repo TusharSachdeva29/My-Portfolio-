@@ -1,0 +1,37 @@
+export const siteConfig = {
+  url: "https://tushar-sachdeva.in",
+  name: "Tushar Sachdeva",
+  title: "Tushar Sachdeva – Software Engineer & Full-Stack Developer",
+  jobTitle: "Software Engineer",
+  description:
+    "Portfolio of Tushar Sachdeva, a software engineer and Computer Science student at NSUT, Delhi. Explore full-stack, AI/ML, distributed systems and low-level C++ projects, experience and achievements.",
+  keywords: [
+    "Tushar Sachdeva",
+    "Tushar Sachdeva portfolio",
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Backend Developer",
+    "NSUT",
+    "Netaji Subhas University of Technology",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "C++",
+    "Machine Learning",
+    "Distributed Systems",
+    "Competitive Programming",
+  ],
+  image: "/my-pic.jpg",
+  resume:
+    "https://drive.google.com/file/d/1CoV8F4cdqJ8TNGnCC7-b3mWQWqaoDu5j/view?usp=sharing",
+  alumniOf: "Netaji Subhas University of Technology",
+  socials: {
+    github: "https://github.com/TusharSachdeva29",
+    linkedin: "https://www.linkedin.com/in/tushar-sachdeva-573891287/",
+    instagram: "https://www.instagram.com/tushar_._sachdeva/",
+    leetcode: "https://leetcode.com/u/Mad_Monk",
+    codeforces: "https://codeforces.com/profile/TusharSachdeva29",
+    codechef: "https://www.codechef.com/users/mad_monk",
+  },
+} as const;
