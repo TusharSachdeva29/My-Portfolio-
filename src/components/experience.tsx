@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import {
   Briefcase,
@@ -479,10 +480,12 @@ function ExperienceCard({
                         <DialogTrigger asChild>
                           <div className="group/archimg relative rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-900/5 dark:bg-black/40 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#565bac]/40">
                             <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900/40">
-                              <img
+                              <Image
                                 src={project.architectureImage}
                                 alt={`${project.name} Architecture Diagram`}
-                                className="w-full h-full object-contain p-2 sm:p-3 transition-transform duration-500 group-hover/archimg:scale-[1.02]"
+                                fill
+                                sizes="(min-width: 1280px) 1100px, 100vw"
+                                className="object-contain p-2 sm:p-3 transition-transform duration-500 group-hover/archimg:scale-[1.02]"
                               />
                               {/* Hover overlay hint */}
                               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover/archimg:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
