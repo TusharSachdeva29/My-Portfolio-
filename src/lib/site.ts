@@ -23,8 +23,8 @@ export const siteConfig = {
     "Competitive Programming",
   ],
   image: "/my-pic.jpg",
-  resume:
-    "https://drive.google.com/file/d/1CoV8F4cdqJ8TNGnCC7-b3mWQWqaoDu5j/view?usp=sharing",
+  // Self-hosted copy; replace public/resume.pdf to update it.
+  resume: "/resume.pdf",
   alumniOf: "Netaji Subhas University of Technology",
   socials: {
     github: "https://github.com/TusharSachdeva29",

@@ -6,6 +6,7 @@ import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { siteConfig } from "@/lib/site";
 
 export default function BasicInfo() {
   const headerRef = useRef(null);
@@ -111,7 +112,7 @@ export default function BasicInfo() {
                 <ContactUs />
               </motion.div>
                   <motion.a 
-                    href="https://drive.google.com/file/d/1CoV8F4cdqJ8TNGnCC7-b3mWQWqaoDu5j/view?usp=sharing" 
+                    href={siteConfig.resume}
                     target="_blank" 
                     rel="noopener noreferrer" 
                     aria-label="View Tushar Sachdeva's resume (opens in a new tab)" 
