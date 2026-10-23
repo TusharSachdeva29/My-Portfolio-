@@ -47,7 +47,7 @@ export const projects: ProjectData[] = [
     about:
       "A personal archive of my journey through college and beyond.",
     techStack: [
-      "Next.js 15",
+      "Next.js 14",
       "TypeScript",
       "Tailwind CSS",
       "Framer Motion",
@@ -201,7 +201,7 @@ export const projects: ProjectData[] = [
     about:
       "Collab-X is a modern, Google Docs-style collaborative text editor that enables multiple users to create and edit documents simultaneously in real-time. Built with a focus on seamless collaboration and robust performance, the application provides a rich text editing experience alongside secure user authentication and highly optimized real-time data synchronization.",
     techStack: [
-      "Next.js 15",
+      "Next.js 14",
       "Tailwind CSS",
       "Tiptap Editor",
       "Liveblocks",
@@ -258,7 +258,6 @@ export const projects: ProjectData[] = [
       },
     ],
     githubLink: "https://github.com/TusharSachdeva29/Collab-X",
-    liveDemo: "https://tushar-collab-x.vercel.app/",
   },
   {
     slug: "udaan-ai",
@@ -751,7 +750,7 @@ export const projects: ProjectData[] = [
     about:
       "Pravah-X is a comprehensive, full-stack web platform designed specifically for beginner and intermediate competitive programmers. It eliminates the friction of environment setup by unifying a personalized IDE, an AI debugging assistant, daily problem tracking, and live Codeforces analytics into a single, intuitive interface. By streamlining the workflow, Pravah-X allows developers to focus entirely on algorithmic problem-solving rather than boilerplate configuration.",
     techStack: [
-      "Next.js 15",
+      "Next.js 14",
       "React 19",
       "TypeScript",
       "Tailwind CSS",
@@ -1232,7 +1231,7 @@ export const projects: ProjectData[] = [
     about:
       "LegalEase AI is a comprehensive, AI-powered platform designed to demystify complex legal documents by translating them into plain English using Google's cutting-edge Gemini 2.0 model. The platform goes beyond static document analysis by offering a built-in Chrome extension for real-time Google Meet transcription, a RAG-enhanced interactive AI chat for contextual querying, and multilingual voice support. It effectively makes enterprise-grade legal analysis and risk assessment accessible to everyone.",
     techStack: [
-      "Next.js 15",
+      "Next.js 14",
       "TypeScript",
       "Google Gemini 2.0 Flash",
       "Vertex AI Vector Search",
