@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { Send, Linkedin, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sendContactMessage } from "@/app/actions/contact";
@@ -88,7 +88,7 @@ export default function Contact() {
     >
       <div className="max-w-5xl mx-auto">
         {/* ── Section Header ── */}
-        <motion.div
+        <m.div
           className="flex items-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
@@ -98,11 +98,11 @@ export default function Contact() {
             Contact Me
             <span className="text-[#565bac] ml-1">.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {/* ── Left Side: Info & LinkedIn ── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -136,10 +136,10 @@ export default function Contact() {
                 Prefer email? Fill out the form →
               </span>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* ── Right Side: Contact Form ── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -271,7 +271,7 @@ export default function Contact() {
                 )}
               </button>
             </form>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 
@@ -26,7 +26,7 @@ export default function ThemeButton() {
 
   return (
     <div className="relative z-[999] w-full">
-      <motion.div
+      <m.div
         ref={themeChangerRef}
         className="fixed top-0 left-0 w-full p-4 pointer-events-none flex justify-start"
         initial="hidden"
@@ -36,7 +36,7 @@ export default function ThemeButton() {
         <div className="pointer-events-auto">
           <ThemeChanger />
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 }
@@ -61,7 +61,7 @@ export function ThemeChanger() {
   };
 
   return (
-    <motion.div
+    <m.div
       role="button"
       tabIndex={0}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
@@ -90,13 +90,13 @@ export function ThemeChanger() {
       <MoonSun dark={dark} />
 
       {dark ? <Star /> : <Clouds />}
-    </motion.div>
+    </m.div>
   );
 }
 
 function MoonSun({ dark }: { dark: boolean }) {
   return (
-    <motion.div
+    <m.div
       className={`w-10 h-10 rounded-full relative ${
         dark ? "bg-gray-200" : "bg-yellow-400"
       }`}
@@ -113,14 +113,14 @@ function MoonSun({ dark }: { dark: boolean }) {
 
 function Clouds() {
   return (
-    <motion.div
+    <m.div
       className="absolute top-2 left-2"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.svg
+      <m.svg
         className="absolute rounded-full lucide lucide-cloud"
         transition={{
           repeat: Infinity,
@@ -145,8 +145,8 @@ function Clouds() {
         strokeLinejoin="round"
       >
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-      </motion.svg>
-      <motion.svg
+      </m.svg>
+      <m.svg
         className="absolute rounded-full lucide lucide-cloud"
         transition={{
           repeat: Infinity,
@@ -171,8 +171,8 @@ function Clouds() {
         strokeLinejoin="round"
       >
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-      </motion.svg>
-      <motion.svg
+      </m.svg>
+      <m.svg
         className="absolute rounded-full lucide lucide-cloud"
         transition={{
           repeat: Infinity,
@@ -197,21 +197,21 @@ function Clouds() {
         strokeLinejoin="round"
       >
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
-      </motion.svg>
-    </motion.div>
+      </m.svg>
+    </m.div>
   );
 }
 
 function Star() {
   return (
-    <motion.div
+    <m.div
       className="absolute inset-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.svg
+      <m.svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -241,8 +241,8 @@ function Star() {
           strokeWidth="1"
           d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
         />
-      </motion.svg>
-      <motion.svg
+      </m.svg>
+      <m.svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -273,8 +273,8 @@ function Star() {
           strokeWidth="1"
           d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
         />
-      </motion.svg>
-      <motion.svg
+      </m.svg>
+      <m.svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -305,7 +305,7 @@ function Star() {
           strokeWidth="1"
           d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
         />
-      </motion.svg>
-    </motion.div>
+      </m.svg>
+    </m.div>
   );
 }

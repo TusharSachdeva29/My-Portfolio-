@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -56,13 +56,14 @@ export default function Navbar({ headings }: NavbarProps) {
     if (element) {
       // Offset for the fixed header
       const y = element.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
     }
   };
 
   return (
     <>
-      <motion.nav
+      <m.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
@@ -112,7 +113,7 @@ export default function Navbar({ headings }: NavbarProps) {
                   </span>
                   
                   {isActive && (
-                    <motion.div
+                    <m.div
                       layoutId="nav-active-pill"
                       className="absolute inset-0 bg-[#565bac] rounded-full z-0 shadow-md"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -136,12 +137,12 @@ export default function Navbar({ headings }: NavbarProps) {
             )}
           </button>
         </div>
-      </motion.nav>
+      </m.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -154,7 +155,7 @@ export default function Navbar({ headings }: NavbarProps) {
                 const isActive = activeSection === sectionId;
 
                 return (
-                  <motion.a
+                  <m.a
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
@@ -169,11 +170,11 @@ export default function Navbar({ headings }: NavbarProps) {
                     )}
                   >
                     {heading}
-                  </motion.a>
+                  </m.a>
                 );
               })}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

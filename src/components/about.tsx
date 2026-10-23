@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, Github, Linkedin, Instagram } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -134,7 +134,7 @@ export default function About() {
   return (
     <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-8 md:py-12" id="About">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           ref={titleRef}
           className="flex mb-6 md:mb-10"
           initial="hidden"
@@ -145,11 +145,11 @@ export default function About() {
             About
             <span className="text-[#565bac]">.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
           <div className="w-full lg:w-3/5">
-            <motion.div
+            <m.div
               ref={bioRef}
               className="prose dark:prose-invert max-w-none"
               initial="hidden"
@@ -186,9 +186,9 @@ export default function About() {
                 environments, collaborating and building impactful projects
                 using modern technologies.
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               ref={linksRef}
               className="flex mt-8 md:mt-12 items-center gap-2 sm:gap-4"
               initial="hidden"
@@ -198,7 +198,7 @@ export default function About() {
               <p className="text-sm sm:text-base">My Links</p>
               <ArrowRight className="h-5 sm:h-6 w-5 sm:w-6 flex items-center justify-center" />
               <div className="flex gap-3 sm:gap-4">
-                <motion.a
+                <m.a
                   href="https://www.instagram.com/tushar_._sachdeva/"
                   aria-label="Tushar Sachdeva on Instagram"
                   target="_blank"
@@ -208,8 +208,8 @@ export default function About() {
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 >
                   <Instagram className="h-5 sm:h-6 w-5 sm:w-6" />
-                </motion.a>
-                <motion.a
+                </m.a>
+                <m.a
                   href="https://github.com/TusharSachdeva29"
                   aria-label="Tushar Sachdeva on GitHub"
                   target="_blank"
@@ -219,8 +219,8 @@ export default function About() {
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 >
                   <Github className="h-5 sm:h-6 w-5 sm:w-6" />
-                </motion.a>
-                <motion.a
+                </m.a>
+                <m.a
                   href="https://www.linkedin.com/in/tushar-sachdeva-573891287/"
                   aria-label="Tushar Sachdeva on LinkedIn"
                   target="_blank"
@@ -230,13 +230,13 @@ export default function About() {
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 >
                   <Linkedin className="h-5 sm:h-6 w-5 sm:w-6" />
-                </motion.a>
+                </m.a>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           <div className="w-full lg:w-2/5 mt-8 lg:mt-0">
-            <motion.h3
+            <m.h3
               ref={skillsHeaderRef}
               className="text-2xl sm:text-3xl font-semibold mb-4"
               initial="hidden"
@@ -244,9 +244,9 @@ export default function About() {
               variants={fadeIn}
             >
               Skills
-            </motion.h3>
+            </m.h3>
 
-            <motion.div
+            <m.div
               ref={skillsRef}
               className="flex gap-2 sm:gap-3 flex-wrap"
               variants={container}
@@ -254,15 +254,15 @@ export default function About() {
               animate={skillsInView ? "visible" : "hidden"}
             >
               {skills.map((skill, index) => (
-                <motion.div
+                <m.div
                   key={index}
                   className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded-md text-xs sm:text-sm cursor-pointer shadow-sm hover:bg-neutral-700 hover:text-white dark:hover:bg-neutral-300 dark:hover:text-neutral-900 transition-all duration-200"
                   variants={item}
                 >
                   {skill}
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>

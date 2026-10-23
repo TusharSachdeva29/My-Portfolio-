@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useAnimationControls, useMotionValue } from "framer-motion";
+import { m, useAnimationControls, useMotionValue } from "framer-motion";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 
@@ -79,7 +79,7 @@ export default function HoverLines({ headings }: HoverLineProps) {
             key={ele}
             className="flex flex-col justify-around h-full items-end"
           >
-            <motion.div
+            <m.div
               className={cn(style, "w-8 ")}
               animate={bigLineControls}
               variants={{
@@ -91,7 +91,7 @@ export default function HoverLines({ headings }: HoverLineProps) {
               }}
             >
               <Link href={`#${ele}`}>
-                <motion.p
+                <m.p
                   variants={{
                     noHover: { x: "3rem" },
                     hover: { x: "0.4rem" },
@@ -100,15 +100,15 @@ export default function HoverLines({ headings }: HoverLineProps) {
                   animate={headingControls}
                 >
                   {ele}
-                </motion.p>
+                </m.p>
               </Link>
-            </motion.div>
+            </m.div>
             {Array.from({ length: 4 }, (_, index2) => index2 + 1).map(
               (ele, index2) => {
                 const currentLineIndex = index1 * 4 + index2;
 
                 return (
-                  <motion.div
+                  <m.div
                     className={cn(style)}
                     key={index2}
                     ref={(ele: HTMLDivElement | null) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowLeft, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-6 px-4">
       <ThemeButton />
-      <motion.div
+      <m.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120 }}
@@ -34,7 +34,7 @@ export default function NotFound() {
             <Link href="/#Projects">Browse Projects</Link>
           </Button>
         </div>
-      </motion.div>
+      </m.div>
     </main>
   );
 }

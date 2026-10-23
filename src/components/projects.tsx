@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { m, AnimatePresence, useInView } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -62,7 +62,7 @@ export default function Projects() {
     >
       <div className="max-w-7xl mx-auto">
         {/* ── Section Title ──────────────────────────────────── */}
-        <motion.div
+        <m.div
           ref={titleRef}
           className="flex mb-4"
           initial={{ opacity: 0, y: -20 }}
@@ -73,9 +73,9 @@ export default function Projects() {
             Projects
             <span className="text-[#565bac]">.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 10 }}
           animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -83,10 +83,10 @@ export default function Projects() {
         >
           A curated selection of projects spanning full-stack applications,
           AI/ML research, and low-level systems engineering.
-        </motion.p>
+        </m.p>
 
         {/* ── Category Filter Bar ────────────────────────────── */}
-        <motion.div
+        <m.div
           ref={filterRef}
           className="mb-10 flex flex-wrap gap-2 sm:gap-2.5"
           initial={{ opacity: 0, y: 15 }}
@@ -100,7 +100,7 @@ export default function Projects() {
                 ? projects.length
                 : projects.filter((p) => p.category === filter).length;
             return (
-              <motion.button
+              <m.button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
                 whileHover={{ scale: 1.04 }}
@@ -123,14 +123,14 @@ export default function Projects() {
                 >
                   {count}
                 </span>
-              </motion.button>
+              </m.button>
             );
           })}
-        </motion.div>
+        </m.div>
 
         {/* ── Project Cards Grid ─────────────────────────────── */}
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={activeFilter}
             variants={staggerContainer}
             initial="hidden"
@@ -139,15 +139,15 @@ export default function Projects() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
           >
             {filteredProjects.map((project, index) => (
-              <motion.div key={project.slug} variants={cardReveal}>
+              <m.div key={project.slug} variants={cardReveal}>
                 <ProjectCard project={project} index={index} />
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
 
         {filteredProjects.length === 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col items-center justify-center py-20 gap-3"
@@ -156,7 +156,7 @@ export default function Projects() {
             <p className="text-muted-foreground text-lg">
               No projects in this category yet.
             </p>
-          </motion.div>
+          </m.div>
         )}
       </div>
     </section>
@@ -187,7 +187,7 @@ function ProjectCard({
       className="block h-full"
       onClick={handleClick}
     >
-      <motion.div
+      <m.div
         className={cn(
           "group relative flex flex-col h-full overflow-hidden rounded-2xl border bg-background transition-all duration-500",
           "dark:bg-neutral-950/80 dark:border-neutral-800/80",
@@ -202,7 +202,7 @@ function ProjectCard({
         {/* ── Gradient top bar with animated width ── */}
         <div className="relative h-1 w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#565bac] via-[#7c5cbf] to-[#a78bfa] opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-          <motion.div
+          <m.div
             className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#565bac] to-[#a78bfa]"
             initial={{ width: "0%" }}
             whileHover={{ width: "100%" }}
@@ -288,7 +288,7 @@ function ProjectCard({
             )}
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </Link>
   );
 }

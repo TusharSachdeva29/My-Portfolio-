@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { m, AnimatePresence, useInView } from "framer-motion";
 import { Calendar, Award, Code, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -110,14 +110,14 @@ export default function PositionsOfResponsibility() {
       id="Positions-Of-Responsibility"
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.5 }}
           className="mb-12 md:mb-16"
         >
           <div className="overflow-hidden">
-            <motion.h2
+            <m.h2
               initial={{ y: 100 }}
               animate={{ y: isInView ? 0 : 100 }}
               transition={{
@@ -127,18 +127,18 @@ export default function PositionsOfResponsibility() {
               }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold flex items-center flex-row-reverse"
             >
-              <motion.span
+              <m.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isInView ? 1 : 0 }}
                 transition={{ delay: 0.8, duration: 0.3 }}
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold ml-1 text-[#565bac]"
               >
                 .
-              </motion.span>
+              </m.span>
               <span>Positions of Responsibility</span>
-            </motion.h2>
+            </m.h2>
           </div>
-        </motion.div>
+        </m.div>
 
         <div className="lg:hidden mb-6">
           <button
@@ -170,7 +170,7 @@ export default function PositionsOfResponsibility() {
               className="lg:sticky lg:top-24 space-y-1 lg:space-y-2 max-h-[50vh] lg:max-h-none overflow-auto lg:overflow-visible pb-4 lg:pb-0"
             >
               {positions.map((position, index) => (
-                <motion.div
+                <m.div
                   key={position.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{
@@ -229,14 +229,14 @@ export default function PositionsOfResponsibility() {
                       </span>
                     </div>
                     {activePosition === position.id && (
-                      <motion.div
+                      <m.div
                         layoutId="active-indicator"
                         className="w-1.5 h-[76px] rounded-full bg-[#565bac] absolute right-0"
                         style={{ top: 84 * position.id }}
                       />
                     )}
                   </button>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -246,7 +246,7 @@ export default function PositionsOfResponsibility() {
               {positions.map(
                 (position) =>
                   activePosition === position.id && (
-                    <motion.div
+                    <m.div
                       key={position.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -258,7 +258,7 @@ export default function PositionsOfResponsibility() {
                       aria-labelledby={`position-tab-${position.id}`}
                     >
                       <div className="mb-6 md:mb-8">
-                        <motion.div
+                        <m.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
@@ -269,10 +269,10 @@ export default function PositionsOfResponsibility() {
                           <p className="text-lg text-muted-foreground mt-1">
                             {position.organization}
                           </p>
-                        </motion.div>
+                        </m.div>
                       </div>
 
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.1 }}
@@ -283,7 +283,7 @@ export default function PositionsOfResponsibility() {
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {position.skills.map((skill, i) => (
-                            <motion.div
+                            <m.div
                               key={skill}
                               initial={{ opacity: 0, scale: 0.8 }}
                               animate={{ opacity: 1, scale: 1 }}
@@ -298,12 +298,12 @@ export default function PositionsOfResponsibility() {
                               >
                                 {skill}
                               </Badge>
-                            </motion.div>
+                            </m.div>
                           ))}
                         </div>
-                      </motion.div>
+                      </m.div>
 
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.2 }}
@@ -314,7 +314,7 @@ export default function PositionsOfResponsibility() {
                         <ul className="space-y-4">
                           {position.responsibilities.map(
                             (responsibility, i) => (
-                              <motion.li
+                              <m.li
                                 key={i}
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -325,7 +325,7 @@ export default function PositionsOfResponsibility() {
                                 }}
                                 className="flex items-start gap-3"
                               >
-                                <motion.div
+                                <m.div
                                   initial={{ scale: 0, opacity: 0 }}
                                   animate={{
                                     scale: 1,
@@ -341,16 +341,16 @@ export default function PositionsOfResponsibility() {
                                   )}
                                 >
                                   <Award className="h-4 w-4" />
-                                </motion.div>
+                                </m.div>
                                 <span className="text-base md:text-lg">
                                   {responsibility}
                                 </span>
-                              </motion.li>
+                              </m.li>
                             )
                           )}
                         </ul>
-                      </motion.div>
-                    </motion.div>
+                      </m.div>
+                    </m.div>
                   )
               )}
             </AnimatePresence>

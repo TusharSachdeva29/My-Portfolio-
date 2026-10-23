@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import {
   Briefcase,
   Calendar,
@@ -181,7 +181,7 @@ export default function Experience() {
     >
       <div className="max-w-7xl mx-auto">
         {/* ── Section Title ── */}
-        <motion.div
+        <m.div
           ref={titleRef}
           className="flex mb-4"
           initial={{ opacity: 0, y: -20 }}
@@ -192,9 +192,9 @@ export default function Experience() {
             Experience
             <span className="text-[#565bac]">.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 10 }}
           animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -202,10 +202,10 @@ export default function Experience() {
         >
           Building production systems, shipping real features, and solving
           real-world engineering challenges.
-        </motion.p>
+        </m.p>
 
         {/* ── Timeline ── */}
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -220,7 +220,7 @@ export default function Experience() {
               <ExperienceCard key={exp.company} experience={exp} />
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -233,14 +233,14 @@ function ExperienceCard({
   experience: Experience;
 }) {
   return (
-    <motion.div variants={cardVariants} className="relative sm:pl-14 md:pl-16">
+    <m.div variants={cardVariants} className="relative sm:pl-14 md:pl-16">
       {/* Timeline node */}
       <div className="absolute left-0 top-2 hidden sm:flex h-9 w-9 md:h-[44px] md:w-[44px] items-center justify-center rounded-xl border-2 border-[#565bac]/50 bg-background z-10 group">
         <Briefcase className="h-4 w-4 md:h-5 md:w-5 text-[#565bac]" />
       </div>
 
       {/* Card */}
-      <motion.div
+      <m.div
         whileHover={{ y: -4, transition: { duration: 0.2 } }}
         className={cn(
           "group rounded-2xl border bg-background overflow-hidden transition-all duration-300",
@@ -361,7 +361,7 @@ function ExperienceCard({
                   {/* Project bullets */}
                   <div className="space-y-3">
                     {project.highlights.map((highlight, i) => (
-                      <motion.div
+                      <m.div
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -373,7 +373,7 @@ function ExperienceCard({
                         <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed">
                           {highlight}
                         </p>
-                      </motion.div>
+                      </m.div>
                     ))}
                   </div>
 
@@ -564,7 +564,7 @@ function ExperienceCard({
           ) : (
             <div className="space-y-3">
               {exp.highlights?.map((highlight, i) => (
-                <motion.div
+                <m.div
                   key={i}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -576,7 +576,7 @@ function ExperienceCard({
                   <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed">
                     {highlight}
                   </p>
-                </motion.div>
+                </m.div>
               ))}
 
               {/* Demo Video button for single experiences (e.g. Mahindra Logistics) */}
@@ -603,7 +603,7 @@ function ExperienceCard({
             </div>
           )}
         </div>
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 }

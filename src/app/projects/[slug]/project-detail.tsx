@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
   ArrowLeft,
@@ -52,12 +52,12 @@ function SectionHeading({
   title: string;
 }) {
   return (
-    <motion.div variants={itemVariants} className="flex items-center gap-3 mb-2">
+    <m.div variants={itemVariants} className="flex items-center gap-3 mb-2">
       <div className="p-2.5 rounded-xl bg-[#565bac]/10 dark:bg-[#565bac]/15">
         <Icon className="h-5 w-5 text-[#565bac]" />
       </div>
       <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{title}</h2>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -91,7 +91,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       {/* ═══════════════════════════════════════════════════════ */}
       {/* ── HERO HEADER ────────────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════ */}
-      <motion.section
+      <m.section
         ref={heroRef}
         style={{ opacity: heroOpacity, scale: heroScale }}
         className="relative pt-12 pb-10 md:pt-20 md:pb-14 overflow-hidden"
@@ -104,7 +104,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
 
         <div className="container relative px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
           {/* Back button */}
-          <motion.div
+          <m.div
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.05, duration: 0.4 }}
@@ -120,10 +120,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                 All Projects
               </Link>
             </Button>
-          </motion.div>
+          </m.div>
 
           {/* Category + Name */}
-          <motion.div
+          <m.div
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.15, duration: 0.5 }}
@@ -138,10 +138,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
               {project.name}
             </h1>
-          </motion.div>
+          </m.div>
 
           {/* Action Buttons */}
-          <motion.div
+          <m.div
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -197,15 +197,15 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                 </a>
               </Button>
             )}
-          </motion.div>
+          </m.div>
         </div>
-      </motion.section>
+      </m.section>
 
       {/* ═══════════════════════════════════════════════════════ */}
       {/* ── ABOUT ──────────────────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════ */}
       <section className="container px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -213,15 +213,15 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           className="space-y-5"
         >
           <SectionHeading icon={Rocket} title="About" />
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="rounded-2xl border bg-secondary/30 dark:bg-neutral-900/50 p-6 md:p-8"
           >
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed md:leading-8">
               {project.about}
             </p>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </section>
 
       <Separator className="max-w-5xl mx-auto my-10 md:my-14" />
@@ -230,7 +230,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       {/* ── TECH STACK ─────────────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════ */}
       <section className="container px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -238,12 +238,12 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           className="space-y-6"
         >
           <SectionHeading icon={Layers} title="Tech Stack" />
-          <motion.div
+          <m.div
             variants={containerVariants}
             className="flex flex-wrap gap-2.5 md:gap-3"
           >
             {project.techStack.map((tech) => (
-              <motion.div
+              <m.div
                 key={tech}
                 variants={itemVariants}
                 whileHover={{ scale: 1.08, y: -2 }}
@@ -252,10 +252,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                 <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-secondary hover:bg-[#565bac]/10 hover:text-[#565bac] dark:hover:bg-[#565bac]/20 border border-transparent hover:border-[#565bac]/20 transition-all duration-300 cursor-default">
                   {tech}
                 </span>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </section>
 
       <Separator className="max-w-5xl mx-auto my-10 md:my-14" />
@@ -264,7 +264,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       {/* ── FEATURES ───────────────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════ */}
       <section className="container px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -272,12 +272,12 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           className="space-y-8"
         >
           <SectionHeading icon={Zap} title="Features" />
-          <motion.div
+          <m.div
             variants={containerVariants}
             className="grid gap-4 sm:grid-cols-2"
           >
             {project.features.map((feature) => (
-              <motion.div
+              <m.div
                 key={feature.title}
                 variants={itemVariants}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
@@ -298,10 +298,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                 </div>
                 {/* Bottom accent line */}
                 <div className="mt-4 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#565bac] to-[#a78bfa] transition-all duration-500 rounded-full" />
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════ */}
@@ -311,7 +311,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
         <>
           <Separator className="max-w-5xl mx-auto my-10 md:my-14" />
           <section className="container px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
@@ -320,11 +320,11 @@ export default function ProjectDetail({ slug }: { slug: string }) {
             >
               <SectionHeading icon={Network} title="Architecture" />
 
-              <motion.div variants={containerVariants} className="relative">
+              <m.div variants={containerVariants} className="relative">
                 {/* ── Timeline ── */}
                 <div className="space-y-0">
                   {project.architecture.map((item, index) => (
-                    <motion.div
+                    <m.div
                       key={item.title}
                       variants={itemVariants}
                       className="relative pl-10 md:pl-12 pb-8 last:pb-0 group/arch"
@@ -350,11 +350,11 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                           {item.description}
                         </p>
                       </div>
-                    </motion.div>
+                    </m.div>
                   ))}
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </section>
         </>
       )}
@@ -365,7 +365,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       {/* ── FUTURE IMPROVEMENTS ────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════ */}
       <section className="container px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -374,9 +374,9 @@ export default function ProjectDetail({ slug }: { slug: string }) {
         >
           <SectionHeading icon={Lightbulb} title="Future Improvements" />
 
-          <motion.div variants={containerVariants} className="space-y-3">
+          <m.div variants={containerVariants} className="space-y-3">
             {project.futureImprovements.map((item) => (
-              <motion.div
+              <m.div
                 key={item.title}
                 variants={itemVariants}
                 whileHover={{ x: 6, transition: { type: "spring", stiffness: 400, damping: 20 } }}
@@ -393,10 +393,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                     {item.description}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </section>
 
       <Separator className="max-w-5xl mx-auto my-10 md:my-14" />
@@ -405,7 +405,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       {/* ── FOOTER CTA + NAV ───────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════ */}
       <section className="container px-4 sm:px-6 md:px-8 max-w-5xl mx-auto pb-16 md:pb-24">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -413,7 +413,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           className="space-y-12"
         >
           {/* CTA */}
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="flex flex-col items-center text-center space-y-6 rounded-2xl border bg-secondary/20 dark:bg-neutral-900/30 p-8 md:p-12"
           >
@@ -473,10 +473,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                 </Button>
               )}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Prev / Next navigation */}
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
@@ -511,10 +511,10 @@ export default function ProjectDetail({ slug }: { slug: string }) {
             ) : (
               <div />
             )}
-          </motion.div>
+          </m.div>
 
           {/* Back to all */}
-          <motion.div variants={itemVariants} className="flex justify-center">
+          <m.div variants={itemVariants} className="flex justify-center">
             <Button
               asChild
               variant="ghost"
@@ -526,8 +526,8 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                 Back to All Projects
               </Link>
             </Button>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </section>
     </div>
   );

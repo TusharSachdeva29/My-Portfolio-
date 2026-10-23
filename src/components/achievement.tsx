@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { ExternalLink, Trophy, FileText, Target, Medal } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -139,7 +139,7 @@ function AchievementCard({
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -198,7 +198,7 @@ function AchievementCard({
         </div>
 
         {/* Big Number */}
-        <motion.div
+        <m.div
           className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mt-8 md:mt-0"
           style={{ color: data.accentColor }}
           initial={{ scale: 0.8, filter: "blur(10px)" }}
@@ -215,7 +215,7 @@ function AchievementCard({
           }}
         >
           {data.metricValue}
-        </motion.div>
+        </m.div>
 
         {/* Metric Label */}
         <div className="mt-2 text-lg font-bold text-foreground uppercase tracking-wide">
@@ -229,7 +229,7 @@ function AchievementCard({
       {/* ── Right Side: Details ── */}
       <div className="md:w-2/3 p-6 md:p-8 flex flex-col justify-center relative">
         <div className="flex items-center gap-4 mb-4">
-          <motion.div
+          <m.div
             className="p-3 rounded-xl"
             style={{
               backgroundColor: data.accentGlow,
@@ -238,7 +238,7 @@ function AchievementCard({
             whileHover={{ rotate: 10, scale: 1.1 }}
           >
             {data.icon}
-          </motion.div>
+          </m.div>
           <div>
             <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
               {data.title}
@@ -256,7 +256,7 @@ function AchievementCard({
         {/* Bullets */}
         <ul className="space-y-2 mb-6">
           {data.bullets.map((bullet, i) => (
-            <motion.li
+            <m.li
               key={i}
               initial={{ opacity: 0, x: -10 }}
               animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
@@ -268,7 +268,7 @@ function AchievementCard({
                 style={{ backgroundColor: data.accentColor }}
               />
               <span className="leading-snug">{bullet}</span>
-            </motion.li>
+            </m.li>
           ))}
         </ul>
 
@@ -288,7 +288,7 @@ function AchievementCard({
           </div>
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -307,7 +307,7 @@ export default function Achievement() {
     >
       <div className="max-w-6xl mx-auto">
         {/* ── Header ── */}
-        <motion.div
+        <m.div
           ref={headerRef}
           className="flex items-center mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -320,16 +320,16 @@ export default function Achievement() {
             Achievements
             <span className="text-[#565bac] ml-1">.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 10 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-muted-foreground text-base md:text-lg mb-12 md:mb-16 max-w-2xl font-medium"
         >
           Milestones, competition rankings, and recognized research work.
-        </motion.p>
+        </m.p>
 
         {/* ── Cards List ── */}
         <div className="flex flex-col gap-8 md:gap-10">

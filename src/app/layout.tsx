@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import { themeInitScript } from "@/lib/theme";
+import MotionProvider from "@/components/motion-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -90,7 +91,7 @@ export default function RootLayout({
         {/* <div className="w-full bg-yellow-400 text-black text-center py-4 px-2 text-xl sm:text-2xl font-black uppercase tracking-wider shadow-lg border-b-4 border-yellow-600">
           ⚠️ Warning: This portfolio has been under construction for 2 years… expected completion before my B.Tech degree expires. ,,
         </div> */}
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -113,7 +113,7 @@ function AnimatedValue({
   inView: boolean;
 }) {
   return (
-    <motion.span
+    <m.span
       className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter"
       style={{ color }}
       initial={{ opacity: 0, scale: 0.5, filter: "blur(10px)" }}
@@ -125,7 +125,7 @@ function AnimatedValue({
       transition={{ type: "spring", stiffness: 100, damping: 12, delay: 0.2 }}
     >
       {value}
-    </motion.span>
+    </m.span>
   );
 }
 
@@ -144,7 +144,7 @@ function PlatformCard({
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <motion.a
+    <m.a
       ref={ref}
       href={platform.url}
       target="_blank"
@@ -203,7 +203,7 @@ function PlatformCard({
         {/* ── Header: Icon + Platform + External ── */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <motion.div
+            <m.div
               className="p-2.5 rounded-xl transition-all duration-300"
               style={{
                 background: platform.accentGlow,
@@ -212,7 +212,7 @@ function PlatformCard({
               whileHover={{ rotate: 10, scale: 1.1 }}
             >
               {platform.icon}
-            </motion.div>
+            </m.div>
             <div>
               <h3 className="font-bold text-lg md:text-xl tracking-tight text-foreground">
                 {platform.label}
@@ -229,14 +229,14 @@ function PlatformCard({
             color={platform.accentColor}
             inView={inView}
           />
-          <motion.p
+          <m.p
             initial={{ opacity: 0, x: -10 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
             transition={{ delay: 0.35 + index * 0.1, duration: 0.4 }}
             className="text-sm text-muted-foreground mt-1 font-medium"
           >
             {platform.platform === "GitHub" ? "Total Contributions" : "Contest Rating"}
-          </motion.p>
+          </m.p>
         </div>
 
         {/* ── Divider ── */}
@@ -250,7 +250,7 @@ function PlatformCard({
         {/* ── Stats grid ── */}
         <div className="grid grid-cols-2 gap-3">
           {platform.stats.map((stat, i) => (
-            <motion.div
+            <m.div
               key={stat.label}
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
@@ -271,12 +271,12 @@ function PlatformCard({
               >
                 {stat.value}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* ── Visit profile CTA ── */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.6 + index * 0.1 }}
@@ -288,9 +288,9 @@ function PlatformCard({
         >
           <span>View Profile</span>
           <ExternalLink className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-        </motion.div>
+        </m.div>
       </div>
-    </motion.a>
+    </m.a>
   );
 }
 
@@ -309,7 +309,7 @@ export default function CodingProfile() {
     >
       <div className="max-w-7xl mx-auto">
         {/* ── Section Title ── */}
-        <motion.div
+        <m.div
           ref={titleRef}
           className="flex items-center mb-4"
           initial={{ opacity: 0, y: -20 }}
@@ -322,16 +322,16 @@ export default function CodingProfile() {
             Coding Profiles
             <span className="text-[#565bac]">.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 10 }}
           animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-muted-foreground text-base md:text-lg mb-10 md:mb-14 max-w-xl"
         >
           Competitive programming stats & open-source contributions at a glance.
-        </motion.p>
+        </m.p>
 
         {/* ── Platform Cards Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">

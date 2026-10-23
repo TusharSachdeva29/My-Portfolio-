@@ -23,7 +23,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -142,7 +142,7 @@ function HeaderAnimation() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className="flex items-center mb-8 md:mb-12 flex-row-reverse"
       initial={{ opacity: 0, y: 20 }}
@@ -150,15 +150,15 @@ function HeaderAnimation() {
       transition={{ duration: 0.6 }}
       id="Education"
     >
-      <motion.h2
+      <m.h2
         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <span className="relative">Education</span>
-      </motion.h2>
-    </motion.div>
+      </m.h2>
+    </m.div>
   );
 }
 
@@ -167,7 +167,7 @@ function MainEducationCard() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -203,7 +203,7 @@ function MainEducationCard() {
           </div>
         </CardHeader>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -217,7 +217,7 @@ function SectionHeader({ icon, title }: SectionHeaderProps) {
   const isInView = useInView(ref, { once: false });
 
   return (
-    <motion.h3
+    <m.h3
       ref={ref}
       className="text-2xl font-semibold mb-4 flex items-center gap-2"
       initial={{ opacity: 0, x: -20 }}
@@ -226,7 +226,7 @@ function SectionHeader({ icon, title }: SectionHeaderProps) {
     >
       {icon}
       {title}
-    </motion.h3>
+    </m.h3>
   );
 }
 
@@ -249,7 +249,7 @@ function AnimatedCourseCard({
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -257,7 +257,7 @@ function AnimatedCourseCard({
     >
       <Card className="overflow-hidden hover:shadow-md transition-all duration-300 hover:translate-y-[-5px] h-full">
         <CardHeader className="pb-2 flex flex-row items-start gap-2">
-          <motion.div
+          <m.div
             className="p-2 rounded-md"
             style={{
               background: `linear-gradient(135deg, ${colors.primary}20, ${colors.secondary}20)`,
@@ -291,7 +291,7 @@ function AnimatedCourseCard({
             }}
           >
             {icon}
-          </motion.div>
+          </m.div>
           <div>
             <CardTitle className="text-lg font-semibold">{title}</CardTitle>
           </div>
@@ -299,7 +299,7 @@ function AnimatedCourseCard({
         <CardContent>
           <p className="text-sm text-muted-foreground mb-2">{description}</p>
           <div className="flex items-center gap-2">
-            <motion.div
+            <m.div
               className="w-full"
               initial={{ width: 0 }}
               animate={isInView ? { width: "100%" } : { width: 0 }}
@@ -316,18 +316,18 @@ function AnimatedCourseCard({
                   ),
                 }}
               />
-            </motion.div>
-            <motion.p
+            </m.div>
+            <m.p
               className="text-xs whitespace-nowrap"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: delay + 0.6 }}
             >
               {cg} CGPA
-            </motion.p>
+            </m.p>
           </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 }

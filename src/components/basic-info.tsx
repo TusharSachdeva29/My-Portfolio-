@@ -3,7 +3,7 @@
 import { Bold } from "./ui/bold";
 import { ContactUs } from "./ui/contact-us";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/lib/site";
@@ -67,7 +67,7 @@ export default function BasicInfo() {
     <div className="h-screen w-screen dark:bg-black bg-white dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col" id="basic-info">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_1%,black_80%)]" />
       <div className="w-full h-screen flex justify-center items-center">
-        <motion.div
+        <m.div
           className="flex flex-col md:flex-row items-center justify-between w-11/12 lg:w-5/6 xl:w-4/5 gap-8 lg:gap-16 pt-20"
           initial="hidden"
           animate="visible"
@@ -75,23 +75,23 @@ export default function BasicInfo() {
         >
           {/* Left Text Content */}
           <div className="flex flex-col items-start w-full md:w-[55%] lg:w-3/5">
-            <motion.h1
+            <m.h1
               ref={headerRef}
               className="text-4xl lg:text-8xl xl:text-9xl md:text-6xl font-bold relative z-20 text-transparent bg-clip-text bg-gradient-to-b from-neutral-500 to-neutral-800 py-4 lg:py-8 leading-0 dark:from-neutral-200 dark:to-neutral-500"
               variants={headerAnimation}
             >
               Hi, I&apos;m Tushar<span className="sr-only"> Sachdeva</span>.
-            </motion.h1>
+            </m.h1>
 
-            <motion.p
+            <m.p
               ref={subtitleRef}
               className="text-neutral-800 dark:text-neutral-200 ml-2 text-sm md:text-lg lg:text-3xl z-40"
               variants={fadeInUp}
             >
               Software engineer &amp; final year student at Netaji Subhas University of Technology.
-            </motion.p>
+            </m.p>
 
-            <motion.p
+            <m.p
               ref={descriptionRef}
               className="ml-2 mt-4 text-xs lg:text-lg md:text-sm z-40"
               variants={fadeInUp}
@@ -101,17 +101,17 @@ export default function BasicInfo() {
               , <Bold>competitive coding</Bold>, {" "}
               <Bold>machine learning and deep learning</Bold>, <Bold>distributed systems</Bold> showcasing expertise through projects
               and a strong coding profile.
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               ref={contactRef}
               variants={fadeInUp}
               className="z-50 flex flex-wrap items-center gap-4"
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <ContactUs />
-              </motion.div>
-                  <motion.a 
+              </m.div>
+                  <m.a 
                     href={siteConfig.resume}
                     target="_blank" 
                     rel="noopener noreferrer" 
@@ -127,12 +127,12 @@ export default function BasicInfo() {
                     >
                       <span>View Resume</span>
                     </HoverBorderGradient>
-                  </motion.a>
-            </motion.div>
+                  </m.a>
+            </m.div>
           </div>
 
           {/* Right Image Content */}
-          <motion.div
+          <m.div
             variants={imageReveal}
             className="w-full md:w-[45%] lg:w-2/5 flex justify-center items-center mt-8 md:mt-0 z-40"
           >
@@ -146,8 +146,8 @@ export default function BasicInfo() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </div>
   );
