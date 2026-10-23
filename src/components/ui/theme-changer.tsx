@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { THEME_STORAGE_KEY } from "@/lib/theme";
 
 export default function ThemeButton() {
   const themeChangerRef = useRef(null);
@@ -43,23 +44,36 @@ export default function ThemeButton() {
 export function ThemeChanger() {
   const [dark, setDark] = useState<boolean>(false); // Default value
 
+  // The inline script in layout.tsx has already applied the theme; sync to it.
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      setDark(true);
-    }
+    setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("theme", dark ? "dark" : "light");
-    if (dark) document.body.classList.add("dark");
-    else document.body.classList.remove("dark");
-  }, [dark]);
+  // Only persist an explicit choice, so visitors who never toggle keep
+  // following their system preference.
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, next ? "dark" : "light");
+    } catch {}
+  };
 
   return (
     <motion.div
-      onClick={() => setDark(!dark)}
-      className={`relative flex items-center justify-between w-32 h-12 p-2 rounded-full cursor-pointer overflow-hidden`}
+      role="button"
+      tabIndex={0}
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-pressed={dark}
+      onClick={toggleTheme}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleTheme();
+        }
+      }}
+      className={`relative flex items-center justify-between w-32 h-12 p-2 rounded-full cursor-pointer overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#565bac] focus-visible:ring-offset-2`}
       animate={dark ? "night" : "day"}
       initial="day"
       variants={{

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "@/hooks/use-theme";
 import { Bold } from "./ui/bold";
 import { ContactUs } from "./ui/contact-us";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
@@ -9,8 +8,6 @@ import { useRef } from "react";
 import Image from "next/image";
 
 export default function BasicInfo() {
-  useTheme();
-
   const headerRef = useRef(null);
   const subtitleRef = useRef(null);
   const descriptionRef = useRef(null);
