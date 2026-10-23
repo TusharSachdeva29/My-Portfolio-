@@ -478,8 +478,12 @@ function ExperienceCard({
                       {/* Interactive Thumbnail preview */}
                       <Dialog>
                         <DialogTrigger asChild>
-                          <div className="group/archimg relative rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-900/5 dark:bg-black/40 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#565bac]/40">
-                            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900/40">
+                          <button
+                            type="button"
+                            aria-label={`Open full ${project.name} architecture diagram`}
+                            className="group/archimg relative block w-full text-left rounded-xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800/80 bg-neutral-900/5 dark:bg-black/40 cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#565bac]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#565bac]"
+                          >
+                            <span className="relative block aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900/40">
                               <Image
                                 src={project.architectureImage}
                                 alt={`${project.name} Architecture Diagram`}
@@ -488,7 +492,7 @@ function ExperienceCard({
                                 className="object-contain p-2 sm:p-3 transition-transform duration-500 group-hover/archimg:scale-[1.02]"
                               />
                               {/* Hover overlay hint */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover/archimg:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+                              <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover/archimg:opacity-100 group-focus-visible/archimg:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
                                 <span className="text-white text-xs font-medium flex items-center gap-1.5">
                                   <Maximize2 className="h-3.5 w-3.5" />
                                   Click to inspect full architecture diagram
@@ -496,9 +500,9 @@ function ExperienceCard({
                                 <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[11px] font-semibold">
                                   High Resolution
                                 </span>
-                              </div>
-                            </div>
-                          </div>
+                              </span>
+                            </span>
+                          </button>
                         </DialogTrigger>
                         <DialogContent className="max-w-5xl w-[95vw] max-h-[92vh] p-4 sm:p-6 overflow-hidden flex flex-col bg-background/95 backdrop-blur-xl border border-neutral-200 dark:border-neutral-800">
                           <DialogHeader className="mb-3 shrink-0">

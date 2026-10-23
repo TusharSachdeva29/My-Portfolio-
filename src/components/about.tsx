@@ -25,7 +25,6 @@ export default function About() {
     "ShadCN/UI",
 
     // 🔹 Backend Development
-    "Next.js",
     "Express",
     "PostgreSQL",
     "MongoDB",

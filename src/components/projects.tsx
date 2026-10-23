@@ -219,7 +219,7 @@ function ProjectCard({
         <div className="relative flex flex-1 flex-col p-5 sm:p-6">
           {/* ── Header row: index + category ── */}
           <div className="flex items-center justify-between mb-4">
-            <span className="text-[11px] font-mono text-muted-foreground/60 tracking-wider">
+            <span className="text-[11px] font-mono text-muted-foreground tracking-wider">
               {String(index + 1).padStart(2, "0")}
             </span>
             <Badge
@@ -278,7 +278,7 @@ function ProjectCard({
 
             {/* Live badge indicator */}
             {project.liveDemo && (
-              <span className="flex items-center gap-1.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
+              <span className="flex items-center gap-1.5 text-[10px] text-emerald-700 dark:text-emerald-400 font-medium">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
