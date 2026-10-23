@@ -307,6 +307,7 @@ function AnimatedCourseCard({
             >
               <Progress
                 value={cg * 10}
+                aria-label={`${title}: ${cg} CGPA`}
                 className="h-2"
                 style={{
                   background: cn(
