@@ -270,7 +270,7 @@ function ProjectCard({
                 you are already here nothing more to view
               </span>
             ) : (
-              <span className="text-sm font-medium text-[#565bac] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
+              <span className="text-sm font-medium text-[#565bac] dark:text-[#a5a8e6] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
                 View Project
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>

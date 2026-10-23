@@ -131,7 +131,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           >
             <Badge
               variant="outline"
-              className="text-xs uppercase tracking-[0.2em] font-semibold border-[#565bac]/40 text-[#565bac] px-3 py-1"
+              className="text-xs uppercase tracking-[0.2em] font-semibold border-[#565bac]/40 text-[#565bac] dark:text-[#a5a8e6] px-3 py-1"
             >
               {project.category}
             </Badge>
