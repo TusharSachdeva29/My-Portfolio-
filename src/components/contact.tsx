@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Send, Linkedin, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { sendContactMessage } from "@/app/actions/contact";
 
 export default function Contact() {
   const sectionRef = useRef(null);
@@ -17,6 +18,13 @@ export default function Contact() {
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  // Spam protection: hidden honeypot field + time the form was first shown
+  const [company, setCompany] = useState("");
+  const startedAt = useRef<number>(0);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -43,25 +51,17 @@ export default function Contact() {
     setErrorMessage("");
 
     try {
-      // Using FormSubmit.co for simple, backend-free email routing
-      // The first time this is triggered, an activation email will be sent to sachdevatushar81@gmail.com
-      const response = await fetch("https://formsubmit.co/ajax/sachdevatushar81@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `New Portfolio Message from ${formData.name}`,
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _template: "box", // cleaner email template
-        }),
+      // Sent from the server so the destination address never reaches the browser
+      const result = await sendContactMessage({
+        ...formData,
+        company,
+        startedAt: startedAt.current,
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      if (!result.ok) {
+        setStatus("error");
+        setErrorMessage(result.error);
+        return;
       }
 
       // Success
@@ -146,6 +146,19 @@ export default function Contact() {
             className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-6 sm:p-8"
           >
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {/* Honeypot: invisible to people and screen readers, tempting to bots */}
+              <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="company">Company</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </div>
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="name" className="text-sm font-semibold text-foreground">
                   Name
@@ -154,6 +167,7 @@ export default function Contact() {
                   type="text"
                   id="name"
                   name="name"
+                  autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
@@ -176,6 +190,7 @@ export default function Contact() {
                   type="email"
                   id="email"
                   name="email"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@example.com"
@@ -214,13 +229,13 @@ export default function Contact() {
 
               {/* Status Messages */}
               {status === "error" && (
-                <div className="flex items-center gap-2 text-red-500 text-sm font-medium mt-1">
+                <div role="alert" className="flex items-center gap-2 text-red-600 dark:text-red-400 text-sm font-medium mt-1">
                   <AlertCircle className="h-4 w-4" />
                   <span>{errorMessage}</span>
                 </div>
               )}
               {status === "success" && (
-                <div className="flex items-center gap-2 text-emerald-500 text-sm font-medium mt-1">
+                <div role="status" className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 text-sm font-medium mt-1">
                   <CheckCircle2 className="h-4 w-4" />
                   <span>Message sent successfully! I&apos;ll be in touch soon.</span>
                 </div>
