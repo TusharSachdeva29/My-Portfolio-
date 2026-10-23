@@ -71,10 +71,6 @@ export default function PositionsOfResponsibility() {
   }, []);
 
   useEffect(() => {
-    console.log(activePosition);
-  }, [activePosition]);
-
-  useEffect(() => {
     if (isInView && !activePosition) {
       setActivePosition(positions[0].id);
     }
@@ -108,10 +104,10 @@ export default function PositionsOfResponsibility() {
   };
 
   return (
-    <div
+    <section
       ref={sectionRef}
       className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-16 md:py-24 bg-background"
-      id="Positions Of Responsibility"
+      id="Positions-Of-Responsibility"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -121,7 +117,7 @@ export default function PositionsOfResponsibility() {
           className="mb-12 md:mb-16"
         >
           <div className="overflow-hidden">
-            <motion.h1
+            <motion.h2
               initial={{ y: 100 }}
               animate={{ y: isInView ? 0 : 100 }}
               transition={{
@@ -140,7 +136,7 @@ export default function PositionsOfResponsibility() {
                 .
               </motion.span>
               <span>Positions of Responsibility</span>
-            </motion.h1>
+            </motion.h2>
           </div>
         </motion.div>
 
@@ -225,12 +221,12 @@ export default function PositionsOfResponsibility() {
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold line-clamp-2">
+                      <span className="block font-semibold line-clamp-2">
                         {position.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
+                      </span>
+                      <span className="block text-sm text-muted-foreground">
                         {position.period}
-                      </p>
+                      </span>
                     </div>
                     {activePosition === position.id && (
                       <motion.div
@@ -267,9 +263,9 @@ export default function PositionsOfResponsibility() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <h2 className="text-2xl md:text-3xl font-bold">
+                          <h3 className="text-2xl md:text-3xl font-bold">
                             {position.title}
-                          </h2>
+                          </h3>
                           <p className="text-lg text-muted-foreground mt-1">
                             {position.organization}
                           </p>
@@ -282,9 +278,9 @@ export default function PositionsOfResponsibility() {
                         transition={{ duration: 0.3, delay: 0.1 }}
                         className="mb-6 md:mb-8"
                       >
-                        <h3 className="text-sm uppercase font-semibold text-muted-foreground mb-3">
+                        <h4 className="text-sm uppercase font-semibold text-muted-foreground mb-3">
                           Skills
-                        </h3>
+                        </h4>
                         <div className="flex flex-wrap gap-2">
                           {position.skills.map((skill, i) => (
                             <motion.div
@@ -312,9 +308,9 @@ export default function PositionsOfResponsibility() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <h3 className="text-sm uppercase font-semibold text-muted-foreground mb-3">
+                        <h4 className="text-sm uppercase font-semibold text-muted-foreground mb-3">
                           Key Responsibilities
-                        </h3>
+                        </h4>
                         <ul className="space-y-4">
                           {position.responsibilities.map(
                             (responsibility, i) => (
@@ -358,9 +354,26 @@ export default function PositionsOfResponsibility() {
                   )
               )}
             </AnimatePresence>
+
+            {/* Inactive positions stay in the DOM (hidden) so crawlers can read them */}
+            {positions
+              .filter((position) => position.id !== activePosition)
+              .map((position) => (
+                <div key={position.id} hidden>
+                  <h3>{position.title}</h3>
+                  <p>
+                    {position.organization} · {position.period}
+                  </p>
+                  <ul>
+                    {position.responsibilities.map((responsibility, i) => (
+                      <li key={i}>{responsibility}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

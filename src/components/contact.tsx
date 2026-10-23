@@ -94,12 +94,10 @@ export default function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
             Contact Me
-          </h1>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#565bac] ml-1">
-            .
-          </h1>
+            <span className="text-[#565bac] ml-1">.</span>
+          </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
@@ -110,9 +108,9 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col justify-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Let&apos;s build something amazing together.
-            </h2>
+            </h3>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
               Whether you have a question, a project opportunity, or just want to
               say hi, I try my best to get back to everyone!

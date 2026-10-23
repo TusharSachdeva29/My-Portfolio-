@@ -10,6 +10,9 @@ interface NavbarProps {
   headings: string[];
 }
 
+// Section ids can't contain spaces, so "Coding Profiles" -> "Coding-Profiles"
+const toSectionId = (heading: string) => heading.replace(/\s+/g, "-");
+
 export default function Navbar({ headings }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,7 +26,7 @@ export default function Navbar({ headings }: NavbarProps) {
 
       // Simple active section tracking
       // Finds the section that is currently most visible in viewport
-      const sections = headings.map((h) => document.getElementById(h));
+      const sections = headings.map((h) => document.getElementById(toSectionId(h)));
       let currentSection = "";
 
       for (const section of sections) {
@@ -73,7 +76,7 @@ export default function Navbar({ headings }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between">
           
           {/* Logo / Brand */}
-          <Link href="/" className="flex items-center gap-2 group z-50">
+          <Link href="/" aria-label="Tushar Sachdeva – Home" className="flex items-center gap-2 group z-50">
             <span className="text-xl font-black tracking-tighter">
               TS<span className="text-[#565bac]">.</span>
             </span>
@@ -82,7 +85,8 @@ export default function Navbar({ headings }: NavbarProps) {
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-1">
             {headings.map((heading) => {
-              const isActive = activeSection === heading;
+              const sectionId = toSectionId(heading);
+              const isActive = activeSection === sectionId;
               
               // Handle name shortening for cleaner navbar
               let displayName = heading;
@@ -92,8 +96,8 @@ export default function Navbar({ headings }: NavbarProps) {
               return (
                 <a
                   key={heading}
-                  href={`#${heading}`}
-                  onClick={(e) => handleLinkClick(e, heading)}
+                  href={`#${sectionId}`}
+                  onClick={(e) => handleLinkClick(e, sectionId)}
                   className={cn(
                     "relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200",
                     "hover:bg-neutral-100 dark:hover:bg-neutral-800 active:scale-95 block",
@@ -146,7 +150,8 @@ export default function Navbar({ headings }: NavbarProps) {
           >
             <div className="flex flex-col gap-4">
               {headings.map((heading, i) => {
-                const isActive = activeSection === heading;
+                const sectionId = toSectionId(heading);
+                const isActive = activeSection === sectionId;
 
                 return (
                   <motion.a
@@ -154,8 +159,8 @@ export default function Navbar({ headings }: NavbarProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                     key={heading}
-                    href={`#${heading}`}
-                    onClick={(e) => handleLinkClick(e, heading)}
+                    href={`#${sectionId}`}
+                    onClick={(e) => handleLinkClick(e, sectionId)}
                     className={cn(
                       "text-2xl font-bold p-4 rounded-2xl transition-colors",
                       isActive 

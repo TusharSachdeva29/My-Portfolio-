@@ -150,14 +150,14 @@ function HeaderAnimation() {
       transition={{ duration: 0.6 }}
       id="Education"
     >
-      <motion.h1
+      <motion.h2
         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold"
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <span className="relative">Education</span>
-      </motion.h1>
+      </motion.h2>
     </motion.div>
   );
 }
@@ -217,7 +217,7 @@ function SectionHeader({ icon, title }: SectionHeaderProps) {
   const isInView = useInView(ref, { once: false });
 
   return (
-    <motion.h2
+    <motion.h3
       ref={ref}
       className="text-2xl font-semibold mb-4 flex items-center gap-2"
       initial={{ opacity: 0, x: -20 }}
@@ -226,7 +226,7 @@ function SectionHeader({ icon, title }: SectionHeaderProps) {
     >
       {icon}
       {title}
-    </motion.h2>
+    </motion.h3>
   );
 }
 

@@ -303,9 +303,9 @@ export default function CodingProfile() {
   const titleInView = useInView(titleRef, { once: true, amount: 0.5 });
 
   return (
-    <div
+    <section
       className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-8 md:py-12"
-      id="Coding Profiles"
+      id="Coding-Profiles"
     >
       <div className="max-w-7xl mx-auto">
         {/* ── Section Title ── */}
@@ -318,12 +318,10 @@ export default function CodingProfile() {
           }
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
             Coding Profiles
-          </h1>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#565bac]">
-            .
-          </h1>
+            <span className="text-[#565bac]">.</span>
+          </h2>
         </motion.div>
 
         <motion.p
@@ -342,6 +340,6 @@ export default function CodingProfile() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

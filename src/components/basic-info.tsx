@@ -28,8 +28,10 @@ export default function BasicInfo() {
     },
   };
 
+  // The name and photo are the LCP candidates, so they slide in without
+  // starting invisible — otherwise nothing paints until hydration.
   const headerAnimation = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 1, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
@@ -40,8 +42,20 @@ export default function BasicInfo() {
     },
   };
 
+  const imageReveal = {
+    hidden: { opacity: 1, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   const staggerContainer = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
@@ -63,20 +77,20 @@ export default function BasicInfo() {
         >
           {/* Left Text Content */}
           <div className="flex flex-col items-start w-full md:w-[55%] lg:w-3/5">
-            <motion.p
+            <motion.h1
               ref={headerRef}
               className="text-4xl lg:text-8xl xl:text-9xl md:text-6xl font-bold relative z-20 text-transparent bg-clip-text bg-gradient-to-b from-neutral-500 to-neutral-800 py-4 lg:py-8 leading-0 dark:from-neutral-200 dark:to-neutral-500"
               variants={headerAnimation}
             >
-              Hi, I&apos;m Tushar.
-            </motion.p>
+              Hi, I&apos;m Tushar<span className="sr-only"> Sachdeva</span>.
+            </motion.h1>
 
             <motion.p
               ref={subtitleRef}
               className="text-neutral-800 dark:text-neutral-200 ml-2 text-sm md:text-lg lg:text-3xl z-40"
               variants={fadeInUp}
             >
-              final year student at Netaji Subhash University of Technology.
+              Software engineer &amp; final year student at Netaji Subhas University of Technology.
             </motion.p>
 
             <motion.p
@@ -87,7 +101,7 @@ export default function BasicInfo() {
               Over the past years at NSUT, I&apos;ve excelled in{" "}
               <Bold>full-stack development</Bold>, <Bold>low-level programming</Bold> with C++ servers
               , <Bold>competitive coding</Bold>, {" "}
-              <Bold>maching learning and deep learning</Bold>, <Bold>Distributed systems</Bold> showcasing expertise through projects
+              <Bold>machine learning and deep learning</Bold>, <Bold>distributed systems</Bold> showcasing expertise through projects
               and a strong coding profile.
             </motion.p>
 
@@ -103,6 +117,7 @@ export default function BasicInfo() {
                     href="https://drive.google.com/file/d/1CoV8F4cdqJ8TNGnCC7-b3mWQWqaoDu5j/view?usp=sharing" 
                     target="_blank" 
                     rel="noopener noreferrer" 
+                    aria-label="View Tushar Sachdeva's resume (opens in a new tab)" 
                     className="block mt-4"
                     whileHover={{ scale: 1.05 }} 
                     whileTap={{ scale: 0.95 }}
@@ -120,15 +135,16 @@ export default function BasicInfo() {
 
           {/* Right Image Content */}
           <motion.div
-            variants={fadeInUp}
+            variants={imageReveal}
             className="w-full md:w-[45%] lg:w-2/5 flex justify-center items-center mt-8 md:mt-0 z-40"
           >
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-[6px] border-neutral-100 dark:border-neutral-800 shadow-2xl group">
               <Image
                 src="/my-pic.jpg"
-                alt="Tushar Sachdeva"
+                alt="Tushar Sachdeva, software engineer"
                 fill
                 priority
+                sizes="(min-width: 1280px) 384px, (min-width: 1024px) 320px, (min-width: 768px) 288px, 256px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>

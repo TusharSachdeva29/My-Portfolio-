@@ -316,12 +316,10 @@ export default function Achievement() {
           }
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground">
             Achievements
-          </h1>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#565bac] ml-1">
-            .
-          </h1>
+            <span className="text-[#565bac] ml-1">.</span>
+          </h2>
         </motion.div>
 
         <motion.p

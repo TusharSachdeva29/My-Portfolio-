@@ -40,7 +40,7 @@ export default function About() {
     // 🔹 DevOps & Cloud
     "Docker",
     "Kubernetes",
-    "Ngine",
+    "Nginx",
     "Load Balancing",
     "Reverse Proxy",
     "GCP",
@@ -133,7 +133,7 @@ export default function About() {
   };
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-8 md:py-12" id="About">
+    <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-8 md:py-12" id="About">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={titleRef}
@@ -142,12 +142,10 @@ export default function About() {
           animate={titleInView ? "visible" : "hidden"}
           variants={titleAnimation}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
             About
-          </h1>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#565bac]">
-            .
-          </h1>
+            <span className="text-[#565bac]">.</span>
+          </h2>
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
@@ -203,6 +201,7 @@ export default function About() {
               <div className="flex gap-3 sm:gap-4">
                 <motion.a
                   href="https://www.instagram.com/tushar_._sachdeva/"
+                  aria-label="Tushar Sachdeva on Instagram"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#565bac] transition-colors"
@@ -213,6 +212,7 @@ export default function About() {
                 </motion.a>
                 <motion.a
                   href="https://github.com/TusharSachdeva29"
+                  aria-label="Tushar Sachdeva on GitHub"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#565bac] transition-colors"
@@ -223,6 +223,7 @@ export default function About() {
                 </motion.a>
                 <motion.a
                   href="https://www.linkedin.com/in/tushar-sachdeva-573891287/"
+                  aria-label="Tushar Sachdeva on LinkedIn"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#565bac] transition-colors"
@@ -236,7 +237,7 @@ export default function About() {
           </div>
 
           <div className="w-full lg:w-2/5 mt-8 lg:mt-0">
-            <motion.h2
+            <motion.h3
               ref={skillsHeaderRef}
               className="text-2xl sm:text-3xl font-semibold mb-4"
               initial="hidden"
@@ -244,7 +245,7 @@ export default function About() {
               variants={fadeIn}
             >
               Skills
-            </motion.h2>
+            </motion.h3>
 
             <motion.div
               ref={skillsRef}
@@ -266,6 +267,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
